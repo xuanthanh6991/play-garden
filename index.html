@@ -55,6 +55,7 @@
   --purple: #9B7BF2; --purple-deep: #6C4FC6; --purple-ink: #6A4BC4;
   --teal: #1FA9A1;   --teal-deep: #137C76;   --teal-ink: #0E7A74;
   --wood: #E0A867;   --wood-deep: #A9743A;   --wood-ink: #8A5A24;
+  --navy: #4655B8;   --navy-deep: #2F3C8C;   --navy-ink: #3A4AA8;
   --nb-paper: #FFFEFA; --nb-rule: #8CB3E0; --nb-base: #E07A7A; --nb-margin: #F09A9A;
   --sil: brightness(0) opacity(.8);
   --good: #2EAD68;
@@ -88,7 +89,7 @@
     --guide-fill: #26365F; --guide-dash: #8399CB; --rule: #5B70A2; --rule-mid: #C27474;
     --hl: #FFD54A; --carve: rgba(255, 255, 255, .24);
     --red-ink: #FF8582; --yellow-ink: #FFD261; --green-ink: #5BD993; --blue-ink: #86B2FF; --pink-ink: #FF9ACD;
-    --orange-ink: #FFB06E; --purple-ink: #C3AEFF; --teal-ink: #5EDCD3; --wood-ink: #F0C48E;
+    --orange-ink: #FFB06E; --purple-ink: #C3AEFF; --teal-ink: #5EDCD3; --wood-ink: #F0C48E; --navy-ink: #A9B5FF;
     --nb-paper: #1A2550; --nb-rule: #4F6CAA; --nb-base: #B06A6A; --nb-margin: #8C5A6C; --sil: brightness(0) invert(.88);
     color-scheme: dark;
   }
@@ -102,7 +103,7 @@
   --guide-fill: #26365F; --guide-dash: #8399CB; --rule: #5B70A2; --rule-mid: #C27474;
   --hl: #FFD54A; --carve: rgba(255, 255, 255, .24);
   --red-ink: #FF8582; --yellow-ink: #FFD261; --green-ink: #5BD993; --blue-ink: #86B2FF; --pink-ink: #FF9ACD;
-    --orange-ink: #FFB06E; --purple-ink: #C3AEFF; --teal-ink: #5EDCD3; --wood-ink: #F0C48E;
+    --orange-ink: #FFB06E; --purple-ink: #C3AEFF; --teal-ink: #5EDCD3; --wood-ink: #F0C48E; --navy-ink: #A9B5FF;
     --nb-paper: #1A2550; --nb-rule: #4F6CAA; --nb-base: #B06A6A; --nb-margin: #8C5A6C; --sil: brightness(0) invert(.88);
   color-scheme: dark;
 }
@@ -292,7 +293,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
 .blocks {
   flex: 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
   gap: clamp(16px, 3.6vmin, 40px) clamp(14px, 3vw, 36px); padding-block: 8px 28px;
-  --bs: clamp(96px, min(26vw, 19vh), 210px);
+  --bs: clamp(96px, min(16.5vw, 19vh), 210px);
 }
 @media (orientation: landscape) { .blocks { --bs: clamp(96px, min(16.5vw, 26vh), 210px); } }
 .block { display: flex; flex-direction: column; align-items: center; gap: 26px; }
@@ -411,7 +412,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
 .crayon.on { transform: scale(1.18); outline: 4px solid var(--ink); outline-offset: 2px; }
 
 /* ---------- stories ---------- */
-.shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: calc(var(--gap) * 1.2); width: min(100%, 1000px); }
+.shelf { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap); width: min(100%, 1120px); }
 .bookcover { display: flex; flex-direction: column; gap: 12px; transition: transform .1s; }
 .bookcover.pressed { transform: translateY(5px); }
 .cover-art {
@@ -505,11 +506,11 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
 /* ---------- vocabulary ---------- */
 .topics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); width: min(100%, 1000px); }
 .topic {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px 8px; min-height: clamp(110px, 20vmin, 170px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 10px 6px; min-height: clamp(86px, 14vmin, 140px);
   border-radius: var(--radius); background: var(--c); color: var(--g); box-shadow: 0 8px 0 var(--cd); transition: transform .1s, box-shadow .1s;
 }
 .topic.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--cd); }
-.topic .emo { font-size: clamp(2.6rem, 9vmin, 4.6rem); }
+.topic .emo { font-size: clamp(2.1rem, 6.8vmin, 3.8rem); }
 .topic-name { font-weight: 800; font-size: clamp(.95rem, 2.3vmin, 1.25rem); text-align: center; line-height: 1.1; }
 .flash { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: clamp(14px, 3vmin, 28px) clamp(24px, 6vmin, 64px); width: min(100%, 560px); }
 .flash-emo { font-size: clamp(5.5rem, 24vmin, 12rem); line-height: 1.1; }
@@ -590,6 +591,155 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
 .sil { filter: var(--sil); }
 @media (max-width: 520px) { .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
+/* ---------- more games ---------- */
+.ml.hint { color: var(--rule); }
+.ml.bad { background: var(--red); color: var(--white); box-shadow: 0 6px 0 var(--red-deep); }
+.kb { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px; width: min(100%, 780px); }
+.kb-key {
+  height: clamp(46px, 8vmin, 66px); border-radius: 14px; background: var(--paper); box-shadow: 0 4px 0 var(--paper-edge);
+  font-family: var(--font-read); font-weight: 700; font-size: clamp(1.4rem, 4vmin, 2.1rem); color: var(--ink); transition: transform .08s;
+}
+.kb-key.pressed { transform: translateY(3px); }
+.kb-del { background: var(--guide-fill); }
+.die { width: 120px; height: 120px; border-radius: 26px; background: var(--paper); box-shadow: 0 8px 0 var(--paper-edge); display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); padding: 14px; }
+.die i { width: 72%; height: 72%; border-radius: 50%; place-self: center; background: var(--ink); visibility: hidden; }
+.die i.on { visibility: visible; }
+.die.big { width: clamp(150px, 30vmin, 230px); height: clamp(150px, 30vmin, 230px); padding: 22px; border-radius: 34px; }
+.die.big i { background: var(--red); }
+.die.rolling { animation: wiggle .16s infinite; }
+.tenframe { --tf: clamp(46px, 10vmin, 84px); display: grid; grid-template-columns: repeat(5, var(--tf)); gap: 6px; padding: 12px; }
+.tenframe i { width: var(--tf); height: var(--tf); border: 3px solid var(--rule); border-radius: 12px; display: grid; place-items: center; }
+.tenframe i.on::after { content: ""; width: 72%; height: 72%; border-radius: 50%; background: var(--red); }
+.pat-row.nums { --pi: clamp(64px, min(13vmin, 15vw), 116px); }
+.num-cell { font-family: var(--font-read); font-weight: 700; font-size: calc(var(--pi) * .48); color: var(--ink); }
+
+/* ---------- family games ---------- */
+.modes.single { visibility: hidden; }
+.act-family .act-title { display: block; }
+.fam-setup { width: min(100%, 1060px); padding: 12px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.fam-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fam-label { font-weight: 800; font-size: 1.1rem; color: var(--ink-soft); }
+.fam-count { min-width: 1.4em; text-align: center; font-family: var(--font-read); font-weight: 700; font-size: 2rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.round.fam-pm { width: 50px; height: 50px; font-size: 2rem; font-weight: 800; line-height: 1; }
+.fam-setup .seg-b { height: 48px; min-width: 0; font-size: 1.05rem; }
+.fam-names { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 100%; }
+.fam-name { display: inline-flex; align-items: center; gap: 6px; padding: 4px 5px 4px 10px; border-radius: 999px; background: var(--c); box-shadow: 0 4px 0 var(--cd); }
+.fam-name .emo { font-size: 1.6rem; }
+.fam-name input {
+  width: 7.2em; font: 700 1.05rem var(--font-read); border: 0; border-radius: 999px; padding: 8px 12px; background: var(--paper); color: var(--ink);
+  -webkit-user-select: text; user-select: text;
+}
+.fam-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); width: min(100%, 1060px); }
+.fam-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 6px; min-height: clamp(108px, 19vmin, 170px);
+  border-radius: var(--radius); background: var(--c); color: var(--g); box-shadow: 0 8px 0 var(--cd); text-align: center; transition: transform .1s;
+}
+.fam-card.pressed { transform: translateY(5px); }
+.fam-card .emo { font-size: clamp(2.4rem, 8vmin, 4rem); }
+.fam-card-name { font-weight: 800; font-size: clamp(1rem, 2.3vmin, 1.3rem); line-height: 1.1; }
+.fam-card-kind { font-family: var(--font-read); font-size: clamp(.8rem, 1.8vmin, .95rem); }
+.fam-play { flex: 1; width: 100%; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.fam-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.fam-stage-area { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; position: relative; }
+.fam-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.pill-btn.big { min-height: 74px; padding: 0 30px 0 22px; font-size: clamp(1.2rem, 3.2vmin, 1.7rem); }
+.pill-btn.big .emo { font-size: 1.5em; }
+.scorebar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.pchip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 8px; border-radius: 999px; background: var(--paper); color: var(--ink);
+  box-shadow: inset 0 0 0 3px var(--c), 0 4px 0 var(--paper-edge); font-weight: 800; transition: transform .15s, opacity .2s;
+}
+.pchip .emo { font-size: 1.7rem; }
+.pchip-name { font-size: clamp(.95rem, 2.2vmin, 1.2rem); }
+.pchip-score { min-width: 1.8em; padding: 2px 8px; border-radius: 999px; background: var(--c); color: var(--g); text-align: center; font-variant-numeric: tabular-nums; }
+.pchip-score:empty { display: none; }
+.pchip.turn { background: var(--c); color: var(--g); transform: scale(1.08); }
+.pchip.turn .pchip-score { background: var(--paper); color: var(--ink); }
+.pchip.out { opacity: .35; text-decoration: line-through; }
+.pchip.big { padding: 10px 18px 10px 12px; font-size: 1.25rem; }
+.pchip.big .emo { font-size: 2.4rem; }
+.fam-big { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: clamp(16px, 3vmin, 30px) clamp(20px, 5vmin, 48px); max-width: 100%; text-align: center; }
+.fam-big > .emo { font-size: clamp(5rem, 22vmin, 11rem); line-height: 1.1; }
+.fam-big-text { font-weight: 800; font-size: clamp(1.7rem, 5.4vmin, 3.2rem); line-height: 1.15; text-wrap: balance; color: var(--ink); }
+.fam-big-sub { font-family: var(--font-read); font-size: clamp(1.05rem, 2.8vmin, 1.5rem); color: var(--ink-soft); text-wrap: balance; max-width: 40ch; }
+.fam-win-emo { display: flex; gap: 10px; }
+.fam-win-emo .emo { font-size: clamp(4rem, 14vmin, 7rem); animation: hopLoop 1.4s ease-in-out infinite; }
+.freeze-pip { width: clamp(120px, 22vmin, 200px); }
+.freeze-pip svg { width: 100%; height: auto; overflow: visible; }
+.dancing .freeze-pip { animation: hopLoop .5s ease-in-out infinite; }
+.dancing .fam-big-sub { animation: wiggle .6s ease-in-out infinite; }
+.fam-balloon {
+  width: clamp(110px, 20vmin, 170px); height: calc(clamp(110px, 20vmin, 170px) * 1.18); border-radius: 50% 50% 47% 47% / 56% 56% 44% 44%;
+  background: radial-gradient(circle at 32% 26%, var(--carve) 0 9%, transparent 10%), var(--red); box-shadow: inset -10px -14px 0 var(--shade); transform-origin: 50% 80%;
+}
+.fam-balloon.popped { animation: popOut .35s forwards; }
+.bal-ex { display: flex; gap: 10px; font-size: clamp(2rem, 6vmin, 3rem); }
+.gwho { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px 8px 12px; border-radius: 999px; background: var(--c); color: var(--g); box-shadow: 0 5px 0 var(--cd); font-weight: 800; font-size: clamp(1.1rem, 2.8vmin, 1.5rem); }
+.gwho .emo { font-size: 1.8em; }
+/* race games */
+.race { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.race-row { flex: 1 1 0; min-height: 0; display: flex; gap: 10px; }
+.race-row.flip .race-panel { transform: rotate(180deg); }
+.race-panel {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; border-radius: 22px; background: var(--paper);
+  box-shadow: inset 0 0 0 5px var(--c), 0 6px 0 var(--paper-edge); transition: background .2s;
+}
+.rp-head { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: clamp(1rem, 2.4vmin, 1.35rem); color: var(--ink); }
+.rp-head .emo { font-size: 1.6em; }
+.rp-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rp-score { margin-left: auto; min-width: 2em; padding: 2px 10px; border-radius: 999px; background: var(--c); color: var(--g); text-align: center; font-variant-numeric: tabular-nums; }
+.rp-opts { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; gap: 10px; transition: opacity .2s; }
+.rp-opt {
+  width: var(--ro, 96px); height: var(--ro, 96px); border-radius: 20px; background: var(--guide-fill); box-shadow: 0 5px 0 var(--paper-edge);
+  display: grid; place-items: center; font-family: var(--font-read); font-weight: 700; font-size: calc(var(--ro, 96px) * .5); color: var(--ink); transition: transform .08s;
+}
+.rp-opt.pressed { transform: translateY(3px); }
+.rp-opt .emo { font-size: calc(var(--ro, 96px) * .62); }
+.rp-opts.wide .rp-opt { width: calc(var(--ro, 96px) * 1.5); font-size: calc(var(--ro, 96px) * .3); }
+.race-panel.won { background: var(--c); }
+.race-panel.won .rp-head { color: var(--g); }
+.race-panel.won .rp-score { background: var(--paper); color: var(--ink); }
+.race-panel.locked .rp-opts, .race-panel.wrong .rp-opts { opacity: .35; }
+.race-panel.right { box-shadow: inset 0 0 0 9px var(--good), 0 6px 0 var(--paper-edge); }
+.race-panel.show .rp-opt.ans { box-shadow: 0 0 0 6px var(--good), 0 5px 0 var(--paper-edge); }
+.race-center { flex: none; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.rc-q { display: flex; align-items: center; gap: 12px; padding: 4px 22px; border-radius: 22px; background: var(--paper); box-shadow: 0 6px 0 var(--paper-edge); font-family: var(--font-read); font-weight: 700; font-size: clamp(1.8rem, 5.6vmin, 3.4rem); color: var(--ink); line-height: 1.2; }
+.rc-q.rot { transform: rotate(180deg); }
+.rc-q .emo { font-size: 1.25em; }
+.rc-dots { font-size: .7em; letter-spacing: .04em; }
+.rc-yn { display: inline-flex; align-items: center; gap: 12px; }
+.rc-round { font-weight: 800; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+/* garden race */
+.garden { flex: 1; min-height: 0; display: flex; gap: 14px; }
+.gboard-wrap { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.gstart { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 4px 14px; border-radius: 999px; background: var(--paper); box-shadow: 0 4px 0 var(--paper-edge); font-weight: 800; color: var(--ink); }
+.gstart .gtok { font-size: 1.8rem; }
+.gboard { --gc: 90px; display: grid; grid-template-columns: repeat(6, var(--gc)); grid-template-rows: repeat(4, var(--gc)); gap: 6px; }
+.gcell { position: relative; border-radius: 14px; background: var(--paper); box-shadow: 0 4px 0 var(--paper-edge); display: flex; flex-direction: column; align-items: center; padding: 4px; min-width: 0; }
+.gcell.alt { background: var(--guide-fill); }
+.gcell.finish { background: var(--green); box-shadow: 0 4px 0 var(--green-deep); }
+.gnum { align-self: flex-start; font-family: var(--font-read); font-weight: 700; font-size: calc(var(--gc) * .2); line-height: 1; color: var(--ink-soft); }
+.gcell.finish .gnum { align-self: center; font-size: calc(var(--gc) * .36); }
+.gspecial { position: absolute; right: 4px; top: 3px; font-size: calc(var(--gc) * .24); line-height: 1; }
+.gtok { flex: 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; font-size: calc(var(--gc) * .3); line-height: 1; }
+.gtok .emo.me { filter: drop-shadow(0 0 5px var(--yellow)); transform: scale(1.18); }
+.gside { width: clamp(200px, 25vw, 280px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.glegend { font-family: var(--font-read); font-size: .95rem; color: var(--ink-soft); text-align: center; }
+.gq { position: absolute; left: 50%; top: 12%; transform: translateX(-50%); z-index: 5; width: min(92%, 640px); padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 14px; box-shadow: 0 12px 0 var(--paper-edge), 0 20px 40px var(--shade); }
+.gq-q { font-family: var(--font-read); font-weight: 700; font-size: clamp(2rem, 6vmin, 3.4rem); color: var(--ink); }
+.gq-q .emo { font-size: 1.4em; }
+.gq-opt { --tile: clamp(84px, 14vmin, 130px); }
+.gq-opt > span { font-family: var(--font-read); font-weight: 700; font-size: calc(var(--tile) * .45); color: var(--ink); }
+.gq-opt > .emo { font-size: calc(var(--tile) * .55); }
+@media (orientation: portrait) {
+  .garden { flex-direction: column; }
+  .gside { width: 100%; flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 520px) {
+  .fam-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .race-row { flex-wrap: wrap; }
+}
+
 /* ---------- stickers ---------- */
 .st-title { margin: 0; font-size: clamp(1.4rem, 3.4vmin, 2rem); font-weight: 800; }
 .st-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(clamp(74px, 12vmin, 112px), 1fr)); gap: 16px; width: min(100%, 980px); }
@@ -644,7 +794,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   .lt-learn { grid-template-columns: minmax(0, 1fr); align-content: center; }
   .lt-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
   .book { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(220px, 1.25fr) auto; }
-  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(100%, 620px); }
+  .shelf { grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
 }
 @media (max-width: 900px) { .act-title { display: none; } }
 @media (max-width: 760px) {
@@ -655,6 +805,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   .cmp-row { flex-direction: column; max-height: none; }
 }
 @media (max-width: 520px) {
+  .blocks { --bs: clamp(96px, 36vw, 150px); }
   .ages { display: grid; grid-template-columns: repeat(2, auto); }
   .mode-lbl { display: none; }
   .mode { padding: 0 7px; }
@@ -770,7 +921,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   /* ================= saved settings ================= */
   const Store = {
     key: 'pips-play-garden-v1',
-    data: { level: 2, stars: 0, stickers: 0, sfx: true, slow: true, autoread: true, name: 'Ivy, Ryan', lastAge: 0 },
+    data: { level: 2, stars: 0, stickers: 0, sfx: true, slow: true, autoread: true, name: 'Ivy, Ryan', lastAge: 0, famCount: 4, famLevel: 1, famFlip: true, famNames: [] },
     load() { try { const d = JSON.parse(localStorage.getItem(this.key) || 'null'); if (d && typeof d === 'object') Object.assign(this.data, d); } catch (e) { /* storage blocked: play without saving */ } },
     save() { try { localStorage.setItem(this.key, JSON.stringify(this.data)); } catch (e) { /* ignore */ } }
   };
@@ -974,50 +1125,105 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
 
   /* ================= vocabulary, spelling, memory and thinking data ================= */
   const VOCAB = [
-    { name: 'Animals', e: '🐾', kind: 'an animal', group: 'animals', concrete: true, words: [
-      ['dog', '🐶', 'The dog says woof!'], ['cat', '🐱', 'The cat says meow.'], ['cow', '🐮', 'The cow says moo.'], ['duck', '🦆', 'The duck says quack!'],
-      ['lion', '🦁', 'The lion says roar!'], ['elephant', '🐘', 'The elephant is very big.'], ['monkey', '🐵', 'The monkey likes bananas.'], ['horse', '🐴', 'The horse can run fast.'],
-      ['frog', '🐸', 'The frog can jump.'], ['rabbit', '🐰', 'The rabbit has long ears.'], ['pig', '🐷', 'The pig says oink.'], ['sheep', '🐑', 'The sheep says baa.']] },
-    { name: 'Food', e: '🍎', kind: 'food', group: 'food', concrete: true, words: [
-      ['apple', '🍎', 'The apple is red and crunchy.'], ['banana', '🍌', 'The banana is yellow.'], ['bread', '🍞', 'I eat bread with butter.'], ['milk', '🥛', 'I drink my milk.'],
-      ['egg', '🥚', 'An egg for breakfast.'], ['cheese', '🧀', 'The cheese is yummy.'], ['carrot', '🥕', 'The carrot is orange.'], ['grapes', '🍇', 'The grapes are purple.'],
-      ['strawberry', '🍓', 'The strawberry is sweet.'], ['cookie', '🍪', 'One cookie, please!'], ['pizza', '🍕', 'The pizza is hot.'], ['rice', '🍚', 'I eat rice with a spoon.']] },
+    { name: 'Zoo Animals', e: '🦁', kind: 'a zoo animal', group: 'zoo animals', concrete: true, words: [
+      ['lion', '🦁', 'The lion says roar!'], ['elephant', '🐘', 'The elephant has a long trunk.'], ['monkey', '🐵', 'The monkey likes bananas.'], ['giraffe', '🦒', 'The giraffe has a long neck.'],
+      ['zebra', '🦓', 'The zebra has black and white stripes.'], ['tiger', '🐯', 'The tiger is orange with stripes.'], ['bear', '🐻', 'The bear likes honey.'], ['kangaroo', '🦘', 'The kangaroo can hop.'],
+      ['panda', '🐼', 'The panda eats bamboo.'], ['hippo', '🦛', 'The hippo loves the water.'], ['penguin', '🐧', 'The penguin waddles.'], ['owl', '🦉', 'The owl says hoo, hoo.']] },
+    { name: 'Farm Animals', e: '🐮', kind: 'a farm animal', group: 'farm animals', concrete: true, words: [
+      ['cow', '🐮', 'The cow says moo.'], ['pig', '🐷', 'The pig says oink.'], ['horse', '🐴', 'The horse says neigh.'], ['sheep', '🐑', 'The sheep says baa.'],
+      ['hen', '🐔', 'The hen lays eggs.'], ['duck', '🦆', 'The duck says quack!'], ['goat', '🐐', 'The goat says maa.'], ['dog', '🐶', 'The dog says woof!'],
+      ['cat', '🐱', 'The cat says meow.'], ['rabbit', '🐰', 'The rabbit has long ears.'], ['rooster', '🐓', 'The rooster says cock-a-doodle-doo!'], ['turkey', '🦃', 'The turkey says gobble, gobble.']] },
+    { name: 'Ocean', e: '🐳', kind: 'a sea animal', group: 'sea animals', concrete: true, words: [
+      ['fish', '🐟', 'The fish can swim.'], ['whale', '🐳', 'The whale is very big.'], ['dolphin', '🐬', 'The dolphin can jump.'], ['shark', '🦈', 'The shark has sharp teeth.'],
+      ['octopus', '🐙', 'The octopus has eight arms.'], ['crab', '🦀', 'The crab walks sideways.'], ['turtle', '🐢', 'The turtle swims slowly.'], ['squid', '🦑', 'The squid squirts ink.'],
+      ['lobster', '🦞', 'The lobster has big claws.'], ['shrimp', '🦐', 'The shrimp is tiny.'], ['blowfish', '🐡', 'The blowfish puffs up!']] },
+    { name: 'Bugs', e: '🐞', kind: 'a bug', group: 'bugs', concrete: true, words: [
+      ['bee', '🐝', 'The bee says buzz.'], ['ladybug', '🐞', 'The ladybug has spots.'], ['butterfly', '🦋', 'The butterfly has pretty wings.'], ['ant', '🐜', 'The ant is very small.'],
+      ['caterpillar', '🐛', 'The caterpillar eats leaves.'], ['spider', '🕷️', 'The spider makes a web.'], ['snail', '🐌', 'The snail is slow.'], ['cricket', '🦗', 'The cricket chirps at night.'],
+      ['worm', '🪱', 'The worm wiggles in the dirt.'], ['mosquito', '🦟', 'The mosquito buzzes.']] },
+    { name: 'Food', e: '🍞', kind: 'a food', group: 'food', words: [
+      ['bread', '🍞', 'I eat bread with butter.'], ['milk', '🥛', 'I drink my milk.'], ['egg', '🥚', 'An egg for breakfast.'], ['cheese', '🧀', 'The cheese is yummy.'],
+      ['cookie', '🍪', 'One cookie, please!'], ['pizza', '🍕', 'The pizza is hot.'], ['rice', '🍚', 'I eat rice with a spoon.'], ['soup', '🍲', 'The soup is warm.'],
+      ['sandwich', '🥪', 'A sandwich for lunch.'], ['cake', '🍰', 'Cake for my birthday!'], ['noodles', '🍜', 'I slurp my noodles.'], ['pancakes', '🥞', 'Pancakes for breakfast!'], ['ice cream', '🍦', 'The ice cream is cold.']] },
+    { name: 'Fruits', e: '🍓', kind: 'a fruit', group: 'fruits', concrete: true, words: [
+      ['apple', '🍎', 'The apple is red and crunchy.'], ['banana', '🍌', 'The banana is yellow.'], ['grapes', '🍇', 'The grapes are purple.'], ['strawberry', '🍓', 'The strawberry is sweet.'],
+      ['watermelon', '🍉', 'The watermelon is big and juicy.'], ['orange', '🍊', 'The orange is round.'], ['pineapple', '🍍', 'The pineapple is spiky.'], ['cherries', '🍒', 'Two red cherries.'],
+      ['peach', '🍑', 'The peach is soft.'], ['lemon', '🍋', 'The lemon is sour.'], ['pear', '🍐', 'The pear is green.'], ['kiwi', '🥝', 'The kiwi is green inside.']] },
+    { name: 'Vegetables', e: '🥕', kind: 'a vegetable', group: 'vegetables', concrete: true, words: [
+      ['carrot', '🥕', 'The carrot is orange.'], ['corn', '🌽', 'The corn is yellow.'], ['broccoli', '🥦', 'Broccoli looks like a little tree.'], ['tomato', '🍅', 'The tomato is red.'],
+      ['potato', '🥔', 'Potatoes grow under the ground.'], ['onion', '🧅', 'The onion makes me cry!'], ['cucumber', '🥒', 'The cucumber is long and green.'], ['eggplant', '🍆', 'The eggplant is purple.'],
+      ['lettuce', '🥬', 'Lettuce is green and crunchy.'], ['mushroom', '🍄', 'The mushroom grows in the forest.'], ['pepper', '🌶️', 'The red pepper is hot!']] },
     { name: 'My Body', e: '✋', kind: 'part of my body', group: 'body parts', words: [
       ['eyes', '👀', 'I see with my eyes.'], ['ear', '👂', 'I hear with my ears.'], ['nose', '👃', 'I smell with my nose.'], ['mouth', '👄', 'I eat with my mouth.'],
-      ['hand', '✋', 'I wave with my hand.'], ['foot', '🦶', 'I walk with my feet.'], ['teeth', '🦷', 'I brush my teeth.'], ['leg', '🦵', 'I jump with my legs.']] },
+      ['hand', '✋', 'I wave with my hand.'], ['foot', '🦶', 'I walk with my feet.'], ['teeth', '🦷', 'I brush my teeth.'], ['leg', '🦵', 'I jump with my legs.'],
+      ['tongue', '👅', 'I stick out my tongue!'], ['arm', '💪', 'My arm is strong.']] },
     { name: 'Colors', e: '🎨', kind: 'a color', group: 'colors', words: [
       ['red', '🔴', 'Red, like an apple.'], ['blue', '🔵', 'Blue, like the sky.'], ['yellow', '🟡', 'Yellow, like the sun.'], ['green', '🟢', 'Green, like the grass.'],
       ['orange', '🟠', 'Orange, like a carrot.'], ['purple', '🟣', 'Purple, like grapes.'], ['brown', '🟤', 'Brown, like a teddy bear.'], ['black', '⚫', 'Black, like the night.'], ['white', '⚪', 'White, like snow.']] },
+    { name: 'Shapes', e: '🔷', kind: 'a shape', group: 'shapes', words: [
+      ['circle', '⭕', 'A circle is round.'], ['square', '🟦', 'A square has four sides.'], ['triangle', '🔺', 'A triangle has three sides.'], ['star', '⭐', 'A star has five points.'],
+      ['heart', '❤️', 'A heart means love.'], ['diamond', '🔷', 'A diamond looks like a kite.'], ['crescent', '🌙', 'A crescent is shaped like the moon.']] },
     { name: 'Clothes', e: '👕', kind: 'something to wear', group: 'clothes', concrete: true, words: [
       ['shirt', '👕', 'I put on my shirt.'], ['pants', '👖', 'I put on my pants.'], ['dress', '👗', 'A pretty dress.'], ['shoes', '👟', 'Shoes go on my feet.'],
-      ['socks', '🧦', 'Socks keep my feet warm.'], ['hat', '🧢', 'A hat goes on my head.'], ['coat', '🧥', 'I wear a coat when it is cold.'], ['gloves', '🧤', 'Gloves go on my hands.']] },
+      ['socks', '🧦', 'Socks keep my feet warm.'], ['hat', '🧢', 'A hat goes on my head.'], ['coat', '🧥', 'I wear a coat when it is cold.'], ['gloves', '🧤', 'Gloves go on my hands.'],
+      ['scarf', '🧣', 'A scarf keeps my neck warm.'], ['boots', '👢', 'Boots for rainy days.'], ['glasses', '👓', 'Glasses help me see.'], ['backpack', '🎒', 'My backpack holds my things.']] },
     { name: 'Things That Go', e: '🚗', kind: 'something that goes', group: 'things that go', concrete: true, words: [
-      ['car', '🚗', 'The car goes beep beep!'], ['bus', '🚌', 'The bus is big and yellow.'], ['train', '🚂', 'The train goes choo choo!'], ['airplane', '✈️', 'The airplane flies in the sky.'],
-      ['boat', '⛵', 'The boat sails on the water.'], ['bike', '🚲', 'I ride my bike.'], ['truck', '🚚', 'The truck carries boxes.'], ['rocket', '🚀', 'The rocket goes to space!'], ['tractor', '🚜', 'The tractor works on the farm.']] },
+      ['car', '🚗', 'The car goes beep beep!'], ['bus', '🚌', 'The bus is big.'], ['train', '🚂', 'The train goes choo choo!'], ['airplane', '✈️', 'The airplane flies in the sky.'],
+      ['boat', '⛵', 'The boat sails on the water.'], ['bike', '🚲', 'I ride my bike.'], ['truck', '🚚', 'The truck carries boxes.'], ['rocket', '🚀', 'The rocket goes to space!'],
+      ['tractor', '🚜', 'The tractor works on the farm.'], ['helicopter', '🚁', 'The helicopter goes up and down.'], ['fire truck', '🚒', 'The fire truck goes nee-naw!'],
+      ['police car', '🚓', 'The police car has flashing lights.'], ['ambulance', '🚑', 'The ambulance helps sick people.'], ['scooter', '🛴', 'I ride my scooter.']] },
     { name: 'At Home', e: '🏠', kind: 'something at home', group: 'things at home', concrete: true, words: [
       ['bed', '🛏️', 'I sleep in my bed.'], ['chair', '🪑', 'I sit on a chair.'], ['door', '🚪', 'Open the door.'], ['spoon', '🥄', 'I eat with a spoon.'],
-      ['book', '📖', 'Let’s read a book.'], ['sofa', '🛋️', 'We sit on the sofa.'], ['toothbrush', '🪥', 'I brush with my toothbrush.'], ['bathtub', '🛁', 'Splash in the bathtub!'], ['clock', '⏰', 'The clock says tick tock.']] },
+      ['book', '📖', 'Let’s read a book.'], ['sofa', '🛋️', 'We sit on the sofa.'], ['toothbrush', '🪥', 'I brush with my toothbrush.'], ['bathtub', '🛁', 'Splash in the bathtub!'],
+      ['clock', '⏰', 'The clock says tick tock.'], ['cup', '☕', 'A cup of warm milk.'], ['key', '🔑', 'The key opens the door.'], ['soap', '🧼', 'I wash my hands with soap.'], ['light', '💡', 'Turn on the light.']] },
+    { name: 'Toys', e: '🧸', kind: 'a toy', group: 'toys', concrete: true, words: [
+      ['ball', '⚽', 'Let’s kick the ball!'], ['teddy bear', '🧸', 'I hug my teddy bear.'], ['kite', '🪁', 'The kite flies high.'], ['yo-yo', '🪀', 'The yo-yo goes up and down.'],
+      ['balloon', '🎈', 'The balloon floats up.'], ['puzzle', '🧩', 'I put the puzzle together.'], ['blocks', '🧱', 'I build a tower with blocks.'], ['robot', '🤖', 'The robot goes beep boop.'],
+      ['doll', '🪆', 'The doll has a doll inside!'], ['crayon', '🖍️', 'I draw with a crayon.']] },
+    { name: 'Music', e: '🎵', kind: 'something that makes music', group: 'music makers', concrete: true, words: [
+      ['drum', '🥁', 'Boom, boom goes the drum.'], ['guitar', '🎸', 'Strum the guitar.'], ['piano', '🎹', 'Play the piano keys.'], ['trumpet', '🎺', 'Toot, toot goes the trumpet.'],
+      ['violin', '🎻', 'The violin sings.'], ['microphone', '🎤', 'Sing into the microphone.'], ['bell', '🔔', 'Ring the bell! Ding dong.'], ['banjo', '🪕', 'Strum the banjo.'], ['saxophone', '🎷', 'The saxophone plays jazz.']] },
     { name: 'Outside', e: '🌳', kind: 'something outside', group: 'things outside', concrete: true, words: [
       ['sun', '☀️', 'The sun is hot.'], ['moon', '🌙', 'The moon comes out at night.'], ['star', '⭐', 'Twinkle, little star.'], ['tree', '🌳', 'The tree is tall.'],
-      ['flower', '🌸', 'The flower smells nice.'], ['rain', '🌧️', 'The rain goes drip drop.'], ['cloud', '☁️', 'The cloud is white and fluffy.'], ['rainbow', '🌈', 'Look, a rainbow!'], ['snow', '❄️', 'The snow is cold.']] },
+      ['flower', '🌸', 'The flower smells nice.'], ['mountain', '⛰️', 'The mountain is very high.'], ['leaf', '🍃', 'The leaf falls down.'], ['rock', '🪨', 'The rock is hard.'],
+      ['volcano', '🌋', 'The volcano is hot inside.'], ['cactus', '🌵', 'The cactus is prickly.'], ['plant', '🌱', 'A little plant grows.']] },
+    { name: 'Weather', e: '🌦️', kind: 'weather', group: 'kinds of weather', words: [
+      ['sunny', '🌞', 'It is sunny today.'], ['rainy', '🌧️', 'It is rainy. Get your umbrella!'], ['snowy', '❄️', 'It is snowy and cold.'], ['windy', '🌬️', 'It is windy. Hold your hat!'],
+      ['cloudy', '☁️', 'It is cloudy and gray.'], ['stormy', '⛈️', 'It is stormy. Boom goes the thunder!'], ['rainbow', '🌈', 'Look, a rainbow!'], ['foggy', '🌫️', 'It is foggy. I can’t see far.']] },
     { name: 'Feelings', e: '😊', kind: 'a feeling', group: 'feelings', words: [
       ['happy', '😊', 'I feel happy!'], ['sad', '😢', 'I feel sad.'], ['angry', '😠', 'I feel angry.'], ['scared', '😨', 'I feel scared.'],
-      ['sleepy', '😴', 'I feel sleepy.'], ['silly', '🤪', 'I feel silly!'], ['surprised', '😲', 'Oh! I feel surprised!']] },
+      ['sleepy', '😴', 'I feel sleepy.'], ['silly', '🤪', 'I feel silly!'], ['surprised', '😲', 'Oh! I feel surprised!'], ['excited', '🤩', 'I feel excited!'],
+      ['tired', '🥱', 'I feel tired.'], ['worried', '😟', 'I feel worried.'], ['loved', '🥰', 'I feel loved.']] },
     { name: 'Actions', e: '🏃', kind: 'something I can do', group: 'actions', words: [
       ['run', '🏃', 'I can run.'], ['swim', '🏊', 'I can swim.'], ['dance', '💃', 'I can dance.'], ['clap', '👏', 'I can clap my hands.'],
-      ['wave', '👋', 'I can wave hello.'], ['sleep', '🛌', 'I sleep at night.'], ['ride', '🚴', 'I can ride a bike.'], ['climb', '🧗', 'I can climb up high.']] }
+      ['wave', '👋', 'I can wave hello.'], ['sleep', '🛌', 'I sleep at night.'], ['ride', '🚴', 'I can ride a bike.'], ['climb', '🧗', 'I can climb up high.'],
+      ['eat', '😋', 'I eat my lunch.'], ['drink', '🥤', 'I drink some water.'], ['paint', '🖌️', 'I can paint a picture.'], ['read', '📚', 'I can read a book.']] },
+    { name: 'Jobs', e: '🧑‍🚒', kind: 'a job', group: 'jobs', words: [
+      ['doctor', '🧑‍⚕️', 'The doctor helps sick people.'], ['firefighter', '🧑‍🚒', 'The firefighter puts out fires.'], ['police officer', '👮', 'The police officer keeps us safe.'], ['teacher', '🧑‍🏫', 'The teacher helps us learn.'],
+      ['farmer', '🧑‍🌾', 'The farmer grows food.'], ['chef', '🧑‍🍳', 'The chef cooks yummy food.'], ['astronaut', '🧑‍🚀', 'The astronaut flies to space.'], ['builder', '👷', 'The builder builds houses.'],
+      ['artist', '🧑‍🎨', 'The artist paints pictures.'], ['pilot', '🧑‍✈️', 'The pilot flies the airplane.'], ['scientist', '🧑‍🔬', 'The scientist does experiments.'], ['singer', '🧑‍🎤', 'The singer sings songs.']] }
   ];
   const CONCRETE = VOCAB.filter(c => c.concrete);
   const CONCRETE_WORDS = CONCRETE.reduce((a, c) => a.concat(c.words), []);
-  const PLURAL = ['eyes', 'teeth', 'pants', 'shoes', 'socks', 'gloves', 'grapes'];
-  const be = w => PLURAL.indexOf(w) > -1 ? 'are' : 'is';
+  const PLURAL = ['eyes', 'teeth', 'pants', 'shoes', 'socks', 'gloves', 'grapes', 'cherries', 'boots', 'glasses', 'pancakes', 'noodles', 'blocks'];
+  const isPl = w => PLURAL.indexOf(w) > -1;
+  const be = w => isPl(w) ? 'are' : 'is';
   const MORE_WORDS = [
     ['mouse', '🐭'], ['snake', '🐍'], ['sheep', '🐑'], ['bread', '🍞'], ['chair', '🪑'], ['clock', '⏰'], ['pizza', '🍕'], ['zebra', '🦓'],
     ['tiger', '🐯'], ['whale', '🐳'], ['plane', '✈️'], ['truck', '🚚'], ['cloud', '☁️'], ['shirt', '👕'], ['robot', '🤖'], ['ring', '💍'],
-    ['king', '🤴'], ['log', '🪵'], ['rat', '🐀'], ['ten', '🔟'], ['red', '🔴'], ['pen', '🖊️'], ['dish', '🍽️'], ['spoon', '🥄'], ['rain', '🌧️'], ['hand', '✋'], ['nose', '👃']
+    ['king', '🤴'], ['log', '🪵'], ['rat', '🐀'], ['ten', '🔟'], ['red', '🔴'], ['pen', '🖊️'], ['dish', '🍽️'], ['spoon', '🥄'], ['rain', '🌧️'], ['hand', '✋'], ['nose', '👃'],
+    ['ram', '🐏'], ['tub', '🛁'], ['bow', '🎀'], ['eye', '👁️'], ['ear', '👂'], ['leg', '🦵'], ['arm', '💪'], ['sad', '😢'], ['axe', '🪓'], ['nut', '🥜'], ['ice', '🧊'], ['pin', '📌'], ['tie', '👔'], ['jet', '🛩️'],
+    ['goat', '🐐'], ['seal', '🦭'], ['swan', '🦢'], ['deer', '🦌'], ['wolf', '🐺'], ['bell', '🔔'], ['door', '🚪'], ['soap', '🧼'], ['coat', '🧥'], ['pear', '🍐'],
+    ['rice', '🍚'], ['soup', '🍲'], ['bike', '🚲'], ['ship', '🚢'], ['taxi', '🚕'], ['tent', '⛺'], ['leaf', '🍃'], ['rose', '🌹'], ['snow', '❄️'], ['baby', '👶'],
+    ['gift', '🎁'], ['kiwi', '🥝'], ['flag', '🚩'], ['worm', '🪱'], ['bone', '🦴'], ['foot', '🦶'], ['lips', '👄'], ['game', '🎮'], ['lion', '🦁'], ['bear', '🐻'],
+    ['shark', '🦈'], ['camel', '🐫'], ['koala', '🐨'], ['panda', '🐼'], ['snail', '🐌'], ['bunny', '🐰'], ['lemon', '🍋'], ['grape', '🍇'], ['peach', '🍑'], ['melon', '🍈'],
+    ['onion', '🧅'], ['candy', '🍬'], ['juice', '🧃'], ['water', '💧'], ['tooth', '🦷'], ['smile', '😊'], ['heart', '❤️'], ['crown', '👑'], ['globe', '🌍'], ['beach', '🏖️'],
+    ['piano', '🎹'], ['ghost', '👻'], ['queen', '👸'], ['socks', '🧦'], ['boots', '👢'], ['shoes', '👟'], ['dress', '👗'], ['pants', '👖'], ['scarf', '🧣'], ['broom', '🧹'],
+    ['rabbit', '🐰'], ['turtle', '🐢'], ['monkey', '🐵'], ['orange', '🍊'], ['banana', '🍌'], ['carrot', '🥕'], ['rocket', '🚀'], ['guitar', '🎸'], ['spider', '🕷️'],
+    ['pencil', '✏️'], ['cookie', '🍪'], ['flower', '🌸'], ['violin', '🎻'], ['bucket', '🪣'], ['button', '🔘'], ['candle', '🕯️'], ['cheese', '🧀'], ['tomato', '🍅'], ['potato', '🥔']
   ];
   const SPELLABLE = (() => { const seen = {}, out = []; WORDS.concat(MORE_WORDS).forEach(w => { if (!seen[w[0]]) { seen[w[0]] = 1; out.push(w); } }); return out; })();
-  const spellPool = lv => SPELLABLE.filter(w => { const L = w[0].length; return lv <= 2 ? L === 3 : lv === 3 ? L <= 4 : L >= 4 && L <= 5; });
+  const spellPool = lv => SPELLABLE.filter(w => { const L = w[0].length; return lv <= 2 ? L === 3 : lv === 3 ? L <= 4 : L >= 4 && L <= 6; });
   const FAMILIES = [
     { end: 'at', words: [['cat', '🐱'], ['hat', '🎩'], ['bat', '🦇'], ['rat', '🐀']] },
     { end: 'og', words: [['dog', '🐶'], ['log', '🪵'], ['frog', '🐸']] },
@@ -1037,6 +1243,43 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   const PADS = [['red', '🐞', 262], ['yellow', '🐥', 330], ['green', '🐸', 392], ['blue', '🐳', 523]];
   const PAT_ITEMS = [['🍎', 'apple'], ['🍌', 'banana'], ['🐶', 'dog'], ['🐱', 'cat'], ['⭐', 'star'], ['🌙', 'moon'], ['🔴', 'red'], ['🔵', 'blue'],
     ['🟡', 'yellow'], ['🚗', 'car'], ['🐸', 'frog'], ['🦆', 'duck'], ['🌸', 'flower'], ['☀️', 'sun'], ['🍓', 'strawberry']];
+
+  /* ================= more data: opposites, family moves, stories ================= */
+  for (let n = 21; n <= 30; n++) NUM[n] = n === 30 ? 'thirty' : 'twenty-' + NUM[n - 20];
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const OPPOSITES = [
+    ['big', '🐘', 'small', '🐭'], ['hot', '🔥', 'cold', '🧊'], ['up', '⬆️', 'down', '⬇️'], ['day', '☀️', 'night', '🌙'],
+    ['happy', '😊', 'sad', '😢'], ['fast', '🐆', 'slow', '🐌'], ['open', '📖', 'closed', '📕'], ['wet', '💦', 'dry', '🏜️'],
+    ['loud', '📢', 'quiet', '🤫'], ['awake', '😃', 'asleep', '😴'], ['tall', '🦒', 'short', '🐧'], ['old', '👴', 'young', '👶'],
+    ['stop', '🛑', 'go', '🟢'], ['sweet', '🍭', 'sour', '🍋'], ['soft', '🧸', 'hard', '🪨'], ['left', '⬅️', 'right', '➡️'],
+    ['full', '🥛', 'empty', '🍽️'], ['heavy', '🏋️', 'light', '🪶']
+  ];
+  const MOVES = [
+    ['🦘', 'jump up and down'], ['👏', 'clap your hands'], ['👃', 'touch your nose'], ['🌀', 'spin around'], ['👋', 'wave hello'],
+    ['🦶', 'stomp your feet'], ['🙆', 'touch your head'], ['🦩', 'stand on one foot'], ['🤪', 'make a funny face'], ['🐦', 'flap your wings like a bird'],
+    ['🦁', 'roar like a lion'], ['🪑', 'sit down'], ['🧍', 'stand up tall'], ['🐛', 'wiggle like a worm'], ['🙌', 'reach up high'],
+    ['🤗', 'give yourself a hug'], ['🐸', 'hop like a frog'], ['😴', 'pretend to sleep'], ['👂', 'touch your ears'], ['🦵', 'touch your knees']
+  ];
+  const starSpots = n => [[50, 16], [24, 30], [76, 30], [36, 48], [64, 48]].slice(0, n).map(p => ['⭐', p[0], p[1], 11, 'twinkle']);
+  STORIES.push({ title: 'Sleepy Little Stars', color: 'purple', cover: '⭐', pages: [
+    { bg: 'night', items: starSpots(5).concat([['🏠', 18, 70, 20]]), text: 'Five little stars twinkle in the sky. One star goes to sleep.' },
+    { bg: 'night', items: starSpots(4).concat([['💤', 50, 16, 7, 'float']]), text: 'Five take away one is four. Four little stars! One more goes to sleep.' },
+    { bg: 'night', items: starSpots(3).concat([['💤', 36, 48, 7, 'float']]), text: 'Four take away one is three. Three little stars! One more goes to sleep.' },
+    { bg: 'night', items: starSpots(2).concat([['💤', 76, 30, 7, 'float']]), text: 'Three take away one is two. Two little stars! One more goes to sleep.' },
+    { bg: 'night', items: starSpots(1).concat([['💤', 24, 30, 7, 'float']]), text: 'Two take away one is one. One little star yawns and goes to sleep too.' },
+    { bg: 'night', items: [['🌙', 50, 30, 22, 'bob'], ['💤', 68, 16, 8, 'float']], text: 'One take away one is zero. No more stars! The moon says, “Good night, sky!”' }
+  ] });
+  function allStories() {
+    const k = kidNames(), a = k[0] || 'Ivy', b = k[1] || 'Pip', bE = k[1] ? '🧒' : 'PIP';
+    return STORIES.concat([{ title: `${a} and ${b} Go to the Park`, color: 'orange', cover: '🌳', pages: [
+      { bg: 'day', items: [['🌳', 12, 50, 44], ['🌳', 90, 52, 40], ['🧒', 38, 66, 26, 'bob'], [bE, 62, 66, 26, 'bob']], text: `${a} and ${b} go to the park. The sun is warm.` },
+      { bg: 'day', items: [['🧒', 24, 66, 24, 'hop'], ['⚽', 52, 76, 12, 'spin'], [bE, 78, 66, 24]], text: 'They kick a big ball. Kick, kick, kick!' },
+      { bg: 'day', items: [['🧒', 20, 66, 22], [bE, 40, 66, 22], ['🍞', 54, 60, 8], ['🦆', 68, 76, 14, 'swim'], ['🦆', 86, 78, 12, 'swim', 'flip']], text: 'They feed the ducks. Quack, quack!' },
+      { bg: 'day', items: [['🪁', 70, 22, 18, 'fly'], ['🧒', 34, 68, 24], [bE, 54, 68, 22]], text: 'They fly a kite up high. Whoosh!' },
+      { bg: 'gold', items: [['🧒', 34, 66, 24, 'bob'], [bE, 64, 66, 24, 'bob'], ['🍦', 49, 44, 12, 'bob']], text: 'They share a yummy ice cream. Mmm!' },
+      { bg: 'dusk', items: [['🏡', 76, 56, 30], ['🧒', 30, 70, 20], [bE, 48, 70, 20], ['💤', 60, 40, 9, 'float']], text: 'Then they walk home, tired and happy. The end!' }
+    ] }]);
+  }
 
   /* ================= drawings ================= */
   const ICON = {
@@ -1369,11 +1612,11 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
     }
     round();
   }
-  function numbersAdd(stage, api) {
+  function numbersAdd(stage, api, takeAway) {
     const lv = api.level, cap = [3, 5, 8, 10][lv - 1]; let lastKey = '';
     function round() {
       stage.replaceChildren();
-      const sub = lv >= 4 && Math.random() < 0.4;
+      const sub = !!takeAway;
       let a, b, ans, key;
       do {
         if (sub) { a = 2 + rand(cap - 1); b = 1 + rand(a - 1); ans = a - b; }
@@ -1792,7 +2035,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   function storiesRead(stage, api) {
     function shelf() {
       stage.replaceChildren();
-      stage.append(el('div', { class: 'shelf' }, STORIES.map(s => el('button', { class: 'bookcover', style: colorVars(s.color), 'aria-label': s.title, ontap: () => { Sfx.pop(); openReader(stage, api, s, { onExit: shelf }); } },
+      stage.append(el('div', { class: 'shelf' }, allStories().map(s => el('button', { class: 'bookcover', style: colorVars(s.color), 'aria-label': s.title, ontap: () => { Sfx.pop(); openReader(stage, api, s, { onExit: shelf }); } },
         el('span', { class: 'cover-art' }, s.cover === 'PIP' ? el('span', { class: 'pip-wrap', html: pipSVG() }) : el('span', { class: 'emo' }, s.cover)),
         el('span', { class: 'cover-title' }, s.title)))));
       api.ask('Pick a story!');
@@ -1924,8 +2167,9 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   }
 
   /* ================= VOCABULARY ================= */
-  const TOPIC_COLORS = ['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'purple', 'pink', 'wood', 'red'];
-  const vocabAsk = (cat, w) => cat.name === 'Colors' ? `Find the color ${w}!` : cat.name === 'Feelings' ? `Who feels ${w}?` : cat.name === 'Actions' ? `Who can ${w}?` : `Where ${be(w)} the ${w}?`;
+  const TOPIC_COLORS = ['red', 'orange', 'yellow', 'green', 'teal', 'blue', 'purple', 'pink', 'wood', 'navy'];
+  const vocabAsk = (cat, w) => cat.name === 'Colors' ? `Find the color ${w}!` : cat.name === 'Feelings' ? `Who feels ${w}?` : cat.name === 'Actions' ? `Who can ${w}?`
+    : cat.name === 'Weather' ? `Which one is ${w}?` : cat.name === 'Jobs' ? `Who is the ${w}?` : cat.name === 'Shapes' ? `Find the ${w}!` : `Where ${be(w)} the ${w}?`;
   function vocabLearn(stage, api) {
     function topics() {
       stage.replaceChildren();
@@ -2260,23 +2504,665 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
     round();
   }
 
+  /* ================= more single-player games ================= */
+  function lettersMatch(stage, api) {
+    const lv = api.level, n = [2, 3, 4, 4][lv - 1]; let last = null;
+    function round() {
+      stage.replaceChildren();
+      let t; do { t = pick(ABC); } while (t === last); last = t;
+      const up = lv >= 3 && Math.random() < 0.4, shown = up ? t[0].toLowerCase() : t[0];
+      const opts = shuffle([t].concat(sampleExcept(ABC, n - 1, [t]))), colors = shuffle(COLORS);
+      let done = false;
+      const row = el('div', { class: 'choices' }, opts.map((a, k) => {
+        const ch = up ? a[0] : a[0].toLowerCase();
+        const b = el('button', { class: 'tile', style: colorVars(colors[k % 5]), 'aria-label': 'Letter ' + ch, ontap: () => {
+          if (done) return;
+          if (a === t) { done = true; bounce(b); api.win(b, `${t[0]} and ${t[0].toLowerCase()}!`, `Yes! Big ${say1(t[0])} and little ${say1(t[0])}!`, round); }
+          else api.oops(b, `That's ${ch}. Try again!`, `That's ${up ? 'big' : 'little'} ${say1(a[0])}. Try again!`);
+        } }, ch);
+        return b;
+      }));
+      stage.append(el('div', { class: 'card find-pic' }, el('span', { class: 'word-big' }, shown)), row);
+      if (up) api.ask(`Find big ${t[0]}!`, `This is little ${say1(t[0])}. Find big ${say1(t[0])}!`);
+      else api.ask(`Find little ${t[0].toLowerCase()}!`, `This is big ${say1(t[0])}. Find little ${say1(t[0])}!`);
+    }
+    round();
+  }
+  function vocabOpposites(stage, api) {
+    const lv = api.level, n = [2, 3, 3, 4][lv - 1]; let last = null;
+    function round() {
+      stage.replaceChildren();
+      let pr; do { pr = pick(OPPOSITES); } while (pr === last); last = pr;
+      const rev = Math.random() < 0.5, a = rev ? [pr[2], pr[3]] : [pr[0], pr[1]], b = rev ? [pr[0], pr[1]] : [pr[2], pr[3]];
+      const others = sampleExcept(OPPOSITES, n - 1, [pr]).map(o => Math.random() < 0.5 ? [o[0], o[1]] : [o[2], o[3]]);
+      let done = false;
+      const row = el('div', { class: 'choices' }, shuffle([b].concat(others)).map(o => {
+        const btn = el('button', { class: 'pic', 'aria-label': o[0], ontap: () => {
+          if (done) return;
+          if (o === b) { done = true; bounce(btn); api.win(btn, `${a[0]} and ${b[0]}!`, `Yes! ${a[0]} and ${b[0]} are opposites!`, round); }
+          else api.oops(btn, `That's “${o[0]}”. Try again!`, `That's ${o[0]}. Try again!`);
+        } }, el('span', { class: 'emo' }, o[1]), el('span', { class: 'lbl' }, o[0]));
+        return btn;
+      }));
+      stage.append(el('div', { class: 'card find-pic' }, el('span', { class: 'emo' }, a[1]), el('span', { class: 'word-big rhyme-word' }, a[0])), row);
+      api.ask(`What is the opposite of ${a[0]}?`);
+    }
+    round();
+  }
+  function spellBee(stage, api) {
+    const lv = api.level, pool = spellPool(lv); let last = null;
+    function round() {
+      stage.replaceChildren();
+      let t; do { t = pick(pool); } while (t === last); last = t;
+      const word = t[0], letters = word.split(''), hint = lv <= 2;
+      let typed = [], done = false;
+      const cells = letters.map(() => el('span', { class: 'ml' }));
+      const wordRow = el('div', { class: 'mword' }, cells);
+      const picEmo = el('span', { class: 'emo' + (lv >= 4 ? ' sil' : '') }, t[1]);
+      const pic = el('button', { class: 'card build-pic', 'aria-label': 'Hear the word', ontap: () => Speech.say(word) }, picEmo, el('span', { class: 'hint-ic', html: ICON.speak }));
+      const keys = 'abcdefghijklmnopqrstuvwxyz'.split('').map(ch => el('button', { class: 'kb-key', 'aria-label': 'Letter ' + ch, ontap: () => type(ch) }, ch));
+      const del = el('button', { class: 'kb-key kb-del', 'aria-label': 'Delete', ontap: back }, '⌫');
+      function render() {
+        cells.forEach((c, k) => {
+          c.textContent = typed[k] || (hint ? letters[k] : '');
+          c.classList.toggle('got', !!typed[k]); c.classList.toggle('hint', hint && !typed[k]); c.classList.remove('bad');
+        });
+      }
+      function type(ch) {
+        if (done || typed.length >= letters.length) return;
+        Sfx.pop(); typed.push(ch); Speech.say(say1(ch)); render();
+        if (typed.length === letters.length) later(check, 350);
+      }
+      function back() { if (done || !typed.length) return; typed.pop(); Sfx.pop(); render(); }
+      function check() {
+        if (typed.join('') === word) { done = true; picEmo.classList.remove('sil'); api.win(wordRow, `${word}!`, `Yes! ${spell(word)}. ${word}!`, round); return; }
+        let i = 0; while (typed[i] === letters[i]) i++;
+        cells.forEach((c, k) => c.classList.toggle('bad', typed[k] !== letters[k]));
+        api.oops(wordRow, 'Almost! Let’s fix it.', `Almost! ${word} is spelled ${spell(word)}.`, () => { typed = typed.slice(0, i); render(); });
+      }
+      render();
+      stage.append(el('div', { class: 'build' }, pic, wordRow), el('div', { class: 'kb' }, keys, del));
+      if (hint) api.ask(`Type ${word}!`, `Type ${word}! ${spell(word)}.`);
+      else api.ask('Spell the word!', `Spell ${word}.`);
+    }
+    round();
+  }
+  const DIE_PIPS = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+  const dieFace = (n, cls) => el('div', { class: 'die ' + (cls || ''), 'aria-label': n + ' dots' }, Array.from({ length: 9 }, (_, k) => el('i', { class: DIE_PIPS[n].indexOf(k) > -1 ? 'on' : '' })));
+  const tenFrame = n => el('div', { class: 'card tenframe', 'aria-label': n + ' dots' }, Array.from({ length: 10 }, (_, k) => el('i', { class: k < n ? 'on' : '' })));
+  function numbersDots(stage, api) {
+    const lv = api.level, max = [3, 6, 10, 10][lv - 1]; let last = 0;
+    function round() {
+      stage.replaceChildren();
+      let n; do { n = 1 + rand(max); } while (n === last); last = n;
+      const shown = lv <= 2 ? dieFace(n, 'big') : tenFrame(n);
+      const colors = shuffle(COLORS); let done = false;
+      const row = el('div', { class: 'choices' }, numberOptions(n, [2, 3, 3, 4][lv - 1], 1, max).map((v, k) => {
+        const b = el('button', { class: 'tile num-tile', style: colorVars(colors[k % 5]), 'aria-label': String(v), ontap: () => {
+          if (done) return;
+          if (v === n) { done = true; bounce(b); bounce(shown); api.win(b, `${n}!`, `Yes! ${NUM[n]} dots!`, round); }
+          else api.oops(b, `Not ${v}. Count the dots!`, `Not ${NUM[v]}. Count the dots!`);
+        } }, String(v));
+        return b;
+      }));
+      stage.append(shown, row);
+      api.ask(lv <= 2 ? 'How many dots?' : 'How many dots in the ten frame?');
+    }
+    round();
+  }
+  function numbersSub(stage, api) { numbersAdd(stage, api, true); }
+  function numbersMissing(stage, api) {
+    const lv = api.level;
+    function round() {
+      stage.replaceChildren();
+      let step = 1, start, len = 5, down = false;
+      if (lv === 1) { start = 1 + rand(2); len = 4; }
+      else if (lv === 2) start = 1 + rand(6);
+      else if (lv === 3) { start = 1 + rand(15); down = Math.random() < 0.25; }
+      else { step = pick([1, 2, 2, 5, 10]); start = step === 1 ? 1 + rand(15) : step * rand(3); down = step === 1 && Math.random() < 0.4; }
+      const seq = Array.from({ length: len }, (_, k) => start + k * step);
+      if (down) seq.reverse();
+      const gap = 1 + rand(len - 1), ans = seq[gap];
+      const q = el('div', { class: 'pat-item q' }, el('span', { class: 'q-mark' }, '?'));
+      const cells = seq.map((v, k) => k === gap ? q : el('div', { class: 'pat-item' }, el('span', { class: 'num-cell' }, String(v))));
+      const set = new Set([ans]);
+      [step, -step, 2 * step, -2 * step, 1, -1].forEach(d => { if (set.size < [2, 3, 3, 4][lv - 1] && ans + d >= 0) set.add(ans + d); });
+      const colors = shuffle(COLORS); let done = false;
+      const said = seq.map((v, k) => k === gap ? 'hmm' : String(v)).join(', ');
+      const row = el('div', { class: 'choices' }, Array.from(set).sort((x, y) => x - y).map((v, k) => {
+        const b = el('button', { class: 'tile num-tile', style: colorVars(colors[k % 5]), 'aria-label': String(v), ontap: () => {
+          if (done) return;
+          if (v === ans) { done = true; q.classList.remove('q'); q.replaceChildren(el('span', { class: 'num-cell' }, String(ans))); bounce(q); api.win(b, `${seq.join(', ')}!`, `Yes! ${seq.join(', ')}!`, round); }
+          else api.oops(b, 'Count again!', `Let's count: ${said}.`);
+        } }, String(v));
+        return b;
+      }));
+      stage.append(el('div', { class: 'pat-row nums' }, cells), row);
+      const title = down ? 'Counting down! Which number is missing?' : step > 1 ? `Counting by ${step}s! Which number is missing?` : 'Which number is missing?';
+      api.ask(title, `${said}. ${title}`);
+    }
+    round();
+  }
+
+  /* ================= music for Freeze Dance ================= */
+  const Music = {
+    timer: null,
+    start() {
+      Sfx.unlock(); const c = Sfx.ctx; if (!c) return;
+      this.stop();
+      const chords = [[262, 330, 392], [196, 247, 294], [220, 262, 330], [175, 220, 262]];
+      let step = 0, next = c.currentTime + 0.1;
+      const tick = () => {
+        while (next < c.currentTime + 0.3) {
+          const ch = chords[Math.floor(step / 8) % 4];
+          if (step % 4 === 0) this.note(ch[0] / 2, next, 0.35, 'triangle', 0.22);
+          if (step % 2 === 0) this.note(ch[(step / 2) % 3], next, 0.15, 'square', 0.035);
+          if (Math.random() < 0.65) this.note(pick(ch) * (Math.random() < 0.3 ? 4 : 2), next, 0.14, 'triangle', 0.07);
+          next += 0.16; step++;
+        }
+      };
+      tick(); this.timer = setInterval(tick, 80);
+    },
+    note(f, t, d, type, vol) {
+      const c = Sfx.ctx; if (!c) return;
+      try {
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = type; o.frequency.setValueAtTime(f, t);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+        o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + d + 0.05);
+      } catch (e) { /* ignore */ }
+    },
+    stop() { if (this.timer) clearInterval(this.timer); this.timer = null; }
+  };
+
+  /* ================= FAMILY GAMES (2 to 6 players on one iPad) ================= */
+  const PLAYER_LOOKS = [['🦁', 'red', 'Lion'], ['🐸', 'green', 'Frog'], ['🐼', 'blue', 'Panda'], ['🦊', 'orange', 'Fox'], ['🐧', 'purple', 'Penguin'], ['🦄', 'pink', 'Unicorn']];
+  function famPlayers() {
+    const d = Store.data, n = Math.min(6, Math.max(2, d.famCount || 4)), kids = kidNames(), names = d.famNames || [];
+    return Array.from({ length: n }, (_, i) => ({ i, e: PLAYER_LOOKS[i][0], color: PLAYER_LOOKS[i][1], name: String(names[i] || '').trim() || kids[i] || PLAYER_LOOKS[i][2] }));
+  }
+  const famLevel = () => Math.min(3, Math.max(1, Store.data.famLevel || 1));
+  function scoreBoard(ps, noScore, onChip) {
+    const scores = ps.map(() => 0);
+    const chips = ps.map(p => el('button', { class: 'pchip', style: colorVars(p.color), 'aria-label': p.name, ontap: () => { if (onChip) onChip(p.i); } },
+      el('span', { class: 'emo' }, p.e), el('span', { class: 'pchip-name' }, p.name), el('span', { class: 'pchip-score' }, noScore ? '' : '0')));
+    return {
+      node: el('div', { class: 'scorebar' }, chips), scores,
+      add(i, n) { scores[i] += n || 1; $('.pchip-score', chips[i]).textContent = String(scores[i]); bounce(chips[i]); },
+      turn(i) { chips.forEach((c, k) => c.classList.toggle('turn', k === i)); },
+      toggle(i, cls, on) { chips[i].classList.toggle(cls, on); }
+    };
+  }
+  function famFrame(g, kids) {
+    return el('div', { class: 'fam-play' },
+      el('div', { class: 'fam-bar' },
+        el('button', { class: 'pill-btn ghost', ontap: () => { Sfx.pop(); Music.stop(); g.back(); } }, el('span', { class: 'ic', html: ICON.left }), el('span', null, 'Games')),
+        el('h2', { class: 'book-title' }, `${g.game.e} ${g.game.name}`)), kids);
+  }
+  function famWinner(g, scores, o) {
+    o = o || {};
+    Music.stop();
+    const best = o.low ? Math.min.apply(null, scores) : Math.max.apply(null, scores);
+    const win = g.ps.filter((p, k) => scores[k] === best);
+    const title = win.length === g.ps.length ? 'Everyone wins!' : win.length === 1 ? `${win[0].name} wins!` : `${win.map(w => w.name).join(' and ')} win!`;
+    const card = el('div', { class: 'card fam-big' },
+      el('div', { class: 'fam-win-emo' }, win.map(w => el('span', { class: 'emo' }, w.e))),
+      el('div', { class: 'fam-big-text' }, '🏆 ' + title),
+      el('div', { class: 'scorebar' }, g.ps.map((p, k) => el('span', { class: 'pchip', style: colorVars(p.color) }, el('span', { class: 'emo' }, p.e), el('span', { class: 'pchip-name' }, p.name),
+        el('span', { class: 'pchip-score' }, o.fmt ? o.fmt(scores[k]) : String(scores[k]))))),
+      el('div', { class: 'fam-actions' },
+        el('button', { class: 'pill-btn big', ontap: () => { Sfx.pop(); g.again(); } }, el('span', { class: 'ic', html: ICON.redo }), el('span', null, 'Play again')),
+        el('button', { class: 'pill-btn ghost big', ontap: () => { Sfx.pop(); g.back(); } }, el('span', { class: 'ic', html: ICON.left }), el('span', null, 'All family games'))));
+    g.stage.replaceChildren(famFrame(g, el('div', { class: 'fam-stage-area' }, card)));
+    Sfx.tada(); burst(card, 44);
+    const st = addStar(card);
+    g.api.ask(title, `${title} Great playing, everyone!`, st ? () => showSticker(st) : null);
+  }
+
+  // Question makers shared by the race games and Garden Race.
+  const RACE = {
+    picture(lv) {
+      const cat = pick(CONCRETE), t = pick(cat.words), opts = [t].concat(sampleExcept(cat.words, lv === 1 ? 2 : 3, [t]));
+      return { text: `Find the ${t[0]}!`, answer: t[0], reveal: `It was the ${t[0]}!`, center: () => el('span', { class: 'rc-word' }, t[0]),
+        options: opts.map(o => ({ key: o[0], label: o[0], node: () => el('span', { class: 'emo' }, o[1]) })) };
+    },
+    letter(lv) {
+      if (lv === 3) {
+        const t = pick(ABC.filter(a => a[0] !== 'X')), opts = [t].concat(sampleExcept(ABC, 3, [t]));
+        return { text: `What does ${t[1]} start with?`, answer: t[0], reveal: `${t[1]} starts with ${t[0]}!`, center: () => el('span', { class: 'emo' }, t[2]),
+          options: opts.map(o => ({ key: o[0], label: o[0], node: () => el('span', null, o[0]) })) };
+      }
+      const t = pick(ABC), opts = [t].concat(sampleExcept(ABC, lv === 1 ? 2 : 3, [t])), little = lv === 2;
+      return { text: little ? `Find little ${t[0].toLowerCase()}!` : `Find the letter ${t[0]}!`, say: little ? `Find little ${say1(t[0])}!` : `Find the letter ${say1(t[0])}!`,
+        answer: t[0], reveal: `It was ${little ? t[0].toLowerCase() : t[0]}!`, center: () => el('span', null, t[0]),
+        options: opts.map(o => ({ key: o[0], label: o[0], node: () => el('span', null, little ? o[0].toLowerCase() : o[0]) })) };
+    },
+    math(lv) {
+      let text, say, ans, center;
+      if (lv === 1) {
+        const th = pick(COUNTABLES); ans = 1 + rand(5); text = `How many ${th[2]}?`; say = text;
+        center = () => el('span', { class: 'rc-dots' }, th[0].repeat(ans));
+      } else {
+        const sub = lv === 3 && Math.random() < 0.5, capN = lv === 2 ? 6 : 10;
+        let a, b;
+        if (sub) { a = 2 + rand(capN - 1); b = 1 + rand(a - 1); ans = a - b; } else { a = 1 + rand(capN - 1); b = 1 + rand(capN - a); ans = a + b; }
+        text = sub ? `${a} − ${b} = ?` : `${a} + ${b} = ?`; say = sub ? `What is ${NUM[a]} take away ${NUM[b]}?` : `What is ${NUM[a]} plus ${NUM[b]}?`;
+        center = () => el('span', null, sub ? `${a} − ${b}` : `${a} + ${b}`);
+      }
+      return { text, say, answer: String(ans), reveal: `It was ${ans}!`, center,
+        options: numberOptions(ans, lv === 1 ? 3 : 4, 0, 10).map(v => ({ key: String(v), label: String(v), node: () => el('span', null, String(v)) })) };
+    },
+    yesno() {
+      const w = pick(CONCRETE_WORDS), yes = Math.random() < 0.5, named = yes ? w : pick(CONCRETE_WORDS.filter(x => x[1] !== w[1]));
+      const q = isPl(named[0]) ? `Are these ${named[0]}?` : `Is this ${art(named[0])} ${named[0]}?`;
+      return { text: q, answer: yes ? 'yes' : 'no', wide: true, fixed: true, reveal: yes ? `Yes, it is ${named[0]}!` : `No, it's ${art(w[0])} ${w[0]}!`,
+        center: () => el('span', { class: 'rc-yn' }, el('span', { class: 'emo' }, w[1]), el('span', null, named[0] + '?')),
+        options: [{ key: 'yes', label: 'Yes', node: () => el('span', null, '👍 Yes') }, { key: 'no', label: 'No', node: () => el('span', null, '👎 No') }] };
+    }
+  };
+
+  // Everyone plays at once: each player gets a panel. With 4+ players the top row faces the other side of the table.
+  function famRace(g, gen, everyone) {
+    const { stage, api, ps } = g, lv = famLevel(), ROUNDS = 8;
+    let round = 0, rid = 0;
+    const scores = ps.map(() => 0);
+    const nTop = ps.length >= 4 ? Math.floor(ps.length / 2) : 0, flip = Store.data.famFlip !== false && nTop > 0;
+    const panels = ps.map(p => {
+      const sc = el('span', { class: 'rp-score' }, '0');
+      const pn = el('div', { class: 'race-panel', style: colorVars(p.color) }, el('div', { class: 'rp-head' }, el('span', { class: 'emo' }, p.e), el('span', { class: 'rp-name' }, p.name), sc), el('div', { class: 'rp-opts' }));
+      pn.sc = sc; return pn;
+    });
+    const center = el('div', { class: 'race-center' });
+    stage.replaceChildren(famFrame(g, el('div', { class: 'race' },
+      nTop ? el('div', { class: 'race-row' + (flip ? ' flip' : '') }, panels.slice(0, nTop)) : null, center, el('div', { class: 'race-row' }, panels.slice(nTop)))));
+    function size() {
+      panels.forEach(pn => {
+        const box = $('.rp-opts', pn), n = box.children.length || 1, wide = box.classList.contains('wide') ? 1.5 : 1;
+        const ro = Math.max(54, Math.min(150, (box.clientWidth - 10 * (n - 1)) / n / wide, box.clientHeight - 8));
+        pn.style.setProperty('--ro', ro + 'px');
+      });
+    }
+    const onResize = () => { if (!center.isConnected) { window.removeEventListener('resize', onResize); return; } size(); };
+    window.addEventListener('resize', onResize);
+    function next() {
+      if (round >= ROUNDS) { famWinner(g, scores); return; }
+      round++; const my = ++rid, q = gen(lv); let done = false; const answered = ps.map(() => false);
+      center.replaceChildren(el('div', { class: 'rc-q' }, q.center()), flip ? el('div', { class: 'rc-q rot' }, q.center()) : null, el('div', { class: 'rc-round' }, `${round}/${ROUNDS}`));
+      panels.forEach((pn, k) => {
+        pn.classList.remove('won', 'locked', 'right', 'wrong', 'show');
+        const box = $('.rp-opts', pn); box.className = 'rp-opts' + (q.wide ? ' wide' : '');
+        box.replaceChildren.apply(box, (q.fixed ? q.options : shuffle(q.options)).map(o => {
+          const b = el('button', { class: 'rp-opt' + (o.key === q.answer ? ' ans' : ''), 'aria-label': o.label, ontap: () => choose(k, o, b) }, o.node());
+          return b;
+        }));
+      });
+      requestAnimationFrame(size);
+      api.ask(q.text, q.say);
+      if (everyone) later(() => { if (my === rid) finish(); }, 9000);
+      function choose(k, o, b) {
+        if (done || answered[k] || my !== rid) return;
+        answered[k] = true;
+        const right = o.key === q.answer;
+        if (everyone) {
+          panels[k].classList.add(right ? 'right' : 'wrong');
+          if (right) { scores[k]++; panels[k].sc.textContent = scores[k]; Sfx.tick(scores[k]); bounce(b); } else Sfx.oops();
+          if (answered.every(Boolean)) finish();
+          return;
+        }
+        if (right) {
+          done = true; scores[k]++; panels[k].sc.textContent = scores[k]; panels[k].classList.add('won'); Sfx.good(); burst(b); bounce(b);
+          panels.forEach(pn => pn.classList.add('show'));
+          api.ask(`${ps[k].name} got it!`, null, () => later(() => { if (my === rid) next(); }, 500));
+        } else {
+          panels[k].classList.add('locked'); shake(b); Sfx.oops();
+          if (answered.every(Boolean)) { done = true; panels.forEach(pn => pn.classList.add('show')); api.ask(q.reveal, null, () => later(() => { if (my === rid) next(); }, 600)); }
+        }
+      }
+      function finish() {
+        if (done) return; done = true;
+        panels.forEach(pn => pn.classList.add('show'));
+        const got = ps.filter((p, k) => panels[k].classList.contains('right')).map(p => p.name);
+        const msg = got.length ? `${q.reveal} ${got.length === ps.length ? 'Everyone' : got.join(', ')} got a point!` : q.reveal;
+        api.ask(msg, null, () => later(() => { if (my === rid) next(); }, 600));
+      }
+    }
+    api.ask(g.game.about, null, () => later(next, 300));
+  }
+
+  // Take turns flipping cards. A match scores a point and that player goes again.
+  function famMemory(g) {
+    const { stage, api, ps } = g, pairs = [6, 8, 10][famLevel() - 1];
+    const sb = scoreBoard(ps); let turn = 0, open = [], lock = false, matched = 0;
+    const cat = pick(VOCAB.filter(c => c.words.length >= pairs && c.name !== 'Colors'));
+    const items = shuffle(cat.words).slice(0, pairs), deck = shuffle(items.concat(items));
+    const cols = pairs === 10 ? 5 : 4, rows = Math.ceil(deck.length / cols), backs = shuffle(COLORS);
+    const grid = el('div', { class: 'mem-grid', style: `--cols:${cols}` });
+    deck.forEach((it, k) => {
+      const card = el('button', { class: 'mem-card', 'aria-label': 'Hidden card', ontap: () => flip(card, it) },
+        el('span', { class: 'mem-inner' }, el('span', { class: 'mem-back', style: colorVars(backs[k % 5]) }, '?'),
+          el('span', { class: 'mem-front' }, el('span', { class: 'emo' }, it[1]), el('span', { class: 'mem-word' }, it[0]))));
+      grid.append(card);
+    });
+    const area = el('div', { class: 'fam-stage-area' }, grid);
+    stage.replaceChildren(famFrame(g, [sb.node, area]));
+    function fit() {
+      const w = area.clientWidth, h = area.clientHeight;
+      const mc = Math.max(54, Math.min((w - 12 * (cols - 1)) / cols, (h - 12 * (rows - 1)) / rows / 1.2, 160));
+      grid.style.setProperty('--mc', mc + 'px');
+    }
+    requestAnimationFrame(fit);
+    const onResize = () => { if (!grid.isConnected) { window.removeEventListener('resize', onResize); return; } fit(); };
+    window.addEventListener('resize', onResize);
+    function flip(card, it) {
+      if (lock || card.classList.contains('up')) return;
+      card.classList.add('up'); card.setAttribute('aria-label', it[0]); Sfx.pop(); Speech.say(it[0]);
+      open.push({ card, it });
+      if (open.length < 2) return;
+      lock = true; const a = open[0], b = open[1]; open = [];
+      if (a.it === b.it) {
+        later(() => {
+          a.card.classList.add('matched'); b.card.classList.add('matched'); bounce(a.card); bounce(b.card);
+          sb.add(turn); matched++; Sfx.good(); lock = false;
+          if (matched === pairs) later(() => famWinner(g, sb.scores), 900);
+          else api.ask(`${it[0]}! A match for ${ps[turn].name}! Go again.`);
+        }, 450);
+      } else {
+        later(() => {
+          [a, b].forEach(x => { x.card.classList.remove('up'); x.card.setAttribute('aria-label', 'Hidden card'); });
+          turn = (turn + 1) % ps.length; sb.turn(turn); lock = false;
+          api.ask(`${ps[turn].name}’s turn!`);
+        }, 1300);
+      }
+    }
+    sb.turn(0);
+    api.ask(`${cat.name}! Find the pairs. ${ps[0].name} goes first.`);
+  }
+
+  // A board game: roll the dice and race along the path to the flower garden.
+  function famGarden(g) {
+    const { stage, api, ps } = g, N = 24, lv = famLevel(), dieMax = lv === 1 ? 3 : 6;
+    const SPECIAL = { 3: '⭐', 6: '❓', 8: '🐌', 11: '🌈', 13: '❓', 16: '⭐', 18: '🐌', 20: '❓', 22: '🌈' };
+    const pos = ps.map(() => 0); let turn = 0, busy = false;
+    const sb = scoreBoard(ps, true); sb.turn(0);
+    const cellEls = {};
+    const board = el('div', { class: 'gboard' });
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) {
+      const n = r * 6 + (r % 2 ? 6 - c : c + 1);
+      const cell = el('div', { class: 'gcell' + (n % 2 ? '' : ' alt') + (n === N ? ' finish' : '') },
+        el('span', { class: 'gnum' }, n === N ? '🌻' : String(n)), SPECIAL[n] ? el('span', { class: 'gspecial' }, SPECIAL[n]) : null, el('span', { class: 'gtok' }));
+      cellEls[n] = cell; board.append(cell);
+    }
+    const start = el('div', { class: 'gstart' }, el('span', null, 'Start'), el('span', { class: 'gtok' }));
+    let die = dieFace(1);
+    const dieHolder = el('div', { class: 'die-holder' }, die);
+    const who = el('div', { class: 'gwho' });
+    const rollBtn = el('button', { class: 'pill-btn big', ontap: roll }, el('span', { class: 'emo' }, '🎲'), el('span', null, 'Roll'));
+    const legend = el('div', { class: 'glegend' }, '⭐ hop 2 · 🐌 back 2 · 🌈 roll again · ❓ question');
+    const bw = el('div', { class: 'gboard-wrap' }, start, board);
+    stage.replaceChildren(famFrame(g, [sb.node, el('div', { class: 'garden' }, bw, el('div', { class: 'gside' }, who, dieHolder, rollBtn, legend))]));
+    function setDie(n) { const d = dieFace(n); dieHolder.replaceChildren(d); die = d; }
+    function draw() {
+      Object.keys(cellEls).forEach(k => $('.gtok', cellEls[k]).replaceChildren());
+      $('.gtok', start).replaceChildren();
+      ps.forEach((p, k) => { const tgt = pos[k] === 0 ? start : cellEls[Math.min(N, pos[k])]; $('.gtok', tgt).append(el('span', { class: 'emo' + (k === turn ? ' me' : '') }, p.e)); });
+      who.replaceChildren(el('span', { class: 'emo' }, ps[turn].e), el('span', null, `${ps[turn].name}’s turn`)); who.setAttribute('style', colorVars(ps[turn].color));
+    }
+    function fit() {
+      const w = bw.clientWidth, h = bw.clientHeight - start.offsetHeight - 10;
+      board.style.setProperty('--gc', Math.max(40, Math.min((w - 30) / 6, (h - 18) / 4, 130)) + 'px');
+    }
+    requestAnimationFrame(fit);
+    const onResize = () => { if (!board.isConnected) { window.removeEventListener('resize', onResize); return; } fit(); };
+    window.addEventListener('resize', onResize);
+    function roll() {
+      if (busy) return; busy = true; Sfx.pop();
+      let k = 0;
+      const spin = () => { setDie(1 + rand(6)); die.classList.add('rolling'); if (++k < 9) later(spin, 80); };
+      spin();
+      later(() => {
+        const r = 1 + rand(dieMax); setDie(r); bounce(die); Speech.say(`${NUM[r]}!`);
+        later(() => move(turn, r, () => land(turn)), 800);
+      }, 850);
+    }
+    function move(k, steps, done) {
+      const dir = steps < 0 ? -1 : 1; let left = Math.abs(steps), count = 0;
+      const step = () => {
+        if (left === 0 || (dir > 0 && pos[k] >= N) || (dir < 0 && pos[k] <= 0)) { done(); return; }
+        pos[k] += dir; left--; count++; draw(); Sfx.tick(count); Speech.say(pos[k] === 0 ? 'start' : NUM[pos[k]]);
+        later(step, 520);
+      };
+      step();
+    }
+    function land(k) {
+      if (pos[k] >= N) { pos[k] = N; draw(); api.ask(`${ps[k].name} reached the garden!`, null, () => famWinner(g, pos.slice())); return; }
+      const s = SPECIAL[pos[k]];
+      if (s === '⭐') { api.ask('A star! Hop 2 more!', null, () => move(k, 2, () => land(k))); return; }
+      if (s === '🐌') { api.ask('Oh no, a snail! Slide back 2.', null, () => move(k, -2, nextTurn)); return; }
+      if (s === '🌈') { busy = false; draw(); api.ask(`A rainbow! ${ps[k].name}, roll again!`); return; }
+      if (s === '❓') { question(k); return; }
+      nextTurn();
+    }
+    function question(k) {
+      const q = pick([RACE.picture, RACE.math, RACE.letter])(lv);
+      let answered = false;
+      const box = el('div', { class: 'gq card' }, el('div', { class: 'gq-q' }, q.center()), el('div', { class: 'choices' }, shuffle(q.options).map(o => {
+        const b = el('button', { class: 'pic gq-opt', 'aria-label': o.label, ontap: () => {
+          if (answered) return; answered = true;
+          if (o.key === q.answer) { Sfx.good(); burst(b); api.ask('Right! Hop 1 more!', null, () => { box.remove(); move(k, 1, () => land(k)); }); }
+          else { Sfx.oops(); shake(b); api.ask(q.reveal, null, () => { box.remove(); nextTurn(); }); }
+        } }, o.node());
+        return b;
+      })));
+      stage.append(box);
+      api.ask(`Question for ${ps[k].name}! ${q.text}`, `Question for ${ps[k].name}! ${q.say || q.text}`);
+    }
+    function nextTurn() {
+      turn = (turn + 1) % ps.length; sb.turn(turn); draw(); busy = false;
+      api.ask(`${ps[turn].name}’s turn! Tap Roll.`, `${ps[turn].name}, your turn! Tap roll.`);
+    }
+    draw();
+    api.ask(`Race to the flower garden! ${ps[0].name} goes first. Tap Roll!`);
+  }
+
+  // Simon says, Pip style. Tap a player who moves at the wrong time.
+  function famPipSays(g) {
+    const { stage, api, ps } = g; const out = ps.map(() => false); let last = null;
+    const sb = scoreBoard(ps, true, i => {
+      out[i] = !out[i]; sb.toggle(i, 'out', out[i]); Sfx.pop();
+      if (ps.length > 1 && out.filter(o => !o).length === 1) later(() => famWinner(g, out.map(o => (o ? 0 : 1))), 500);
+    });
+    const emo = el('span', { class: 'emo' }, '🙌'), text = el('div', { class: 'fam-big-text' }, 'Ready? Stand up!');
+    const sub = el('div', { class: 'fam-big-sub' }, 'Do it only when you hear “Pip says”. Tap a player’s name if they get caught.');
+    const nextB = el('button', { class: 'pill-btn big', ontap: go }, el('span', { class: 'emo' }, '▶️'), el('span', null, 'Next move'));
+    const resetB = el('button', { class: 'pill-btn ghost big', ontap: () => { Sfx.pop(); out.fill(false); ps.forEach((p, k) => sb.toggle(k, 'out', false)); api.ask('Everyone is back in!'); } },
+      el('span', { class: 'ic', html: ICON.redo }), el('span', null, 'Everyone back in'));
+    stage.replaceChildren(famFrame(g, [sb.node, el('div', { class: 'fam-stage-area' }, el('div', { class: 'card fam-big' }, emo, text, sub)), el('div', { class: 'fam-actions' }, nextB, resetB)]));
+    function go() {
+      Sfx.pop();
+      let m; do { m = pick(MOVES); } while (m === last); last = m;
+      const says = Math.random() < 0.72, line = (says ? 'Pip says: ' : '') + cap(m[1]) + '!';
+      emo.textContent = m[0]; text.textContent = line; bounce(emo);
+      sub.textContent = says ? 'Do it!' : 'Pip didn’t say “Pip says”! Did anyone move?';
+      api.ask(line, (says ? 'Pip says, ' : '') + m[1] + '!');
+    }
+    api.ask(g.game.about);
+  }
+
+  // Charades: one player acts out a secret picture, everyone else guesses.
+  function famCharades(g) {
+    const { stage, api, ps } = g, lv = famLevel(), TURNS = ps.length * 2;
+    const topics = [['Zoo Animals', 'Farm Animals', 'Things That Go'], ['Zoo Animals', 'Farm Animals', 'Things That Go', 'Actions', 'Ocean'], ['Actions', 'Jobs', 'Feelings', 'Zoo Animals', 'Music', 'Toys']][lv - 1];
+    const pool = VOCAB.filter(c => topics.indexOf(c.name) > -1).reduce((a, c) => a.concat(c.words), []);
+    const sb = scoreBoard(ps); let turn = 0, played = 0; const used = [];
+    const area = el('div', { class: 'fam-stage-area' });
+    stage.replaceChildren(famFrame(g, [sb.node, area]));
+    function ready() {
+      if (played >= TURNS) { famWinner(g, sb.scores); return; }
+      sb.turn(turn); const p = ps[turn];
+      area.replaceChildren(el('div', { class: 'card fam-big' }, el('span', { class: 'emo' }, p.e), el('div', { class: 'fam-big-text' }, `${p.name}, you act next!`),
+        el('div', { class: 'fam-big-sub' }, 'Everyone else: close your eyes!'),
+        el('button', { class: 'pill-btn big', style: colorVars(p.color), ontap: show }, el('span', { class: 'emo' }, '👀'), el('span', null, 'Show my secret picture'))));
+      api.ask(`${p.name}, your turn to act! Everyone else, close your eyes.`);
+    }
+    function show() {
+      Sfx.pop();
+      let w; do { w = pick(pool); } while (used.indexOf(w) > -1 && used.length < pool.length); used.push(w);
+      area.replaceChildren(el('div', { class: 'card fam-big' }, el('span', { class: 'emo' }, w[1]), el('div', { class: 'fam-big-text' }, w[0]),
+        el('div', { class: 'fam-big-sub' }, 'Act it out! You can make sounds, but don’t say the word.'),
+        el('button', { class: 'pill-btn big', ontap: hide }, el('span', { class: 'emo' }, '🙈'), el('span', null, 'Hide it and start acting'))));
+      api.show('Shh! Remember your picture.');
+    }
+    function hide() {
+      Sfx.pop();
+      area.replaceChildren(el('div', { class: 'card fam-big' }, el('span', { class: 'emo' }, '🎭'), el('div', { class: 'fam-big-text' }, 'Open your eyes! What is it?'),
+        el('div', { class: 'fam-big-sub' }, 'Shout your guess! Then tap who got it right.'),
+        el('div', { class: 'scorebar' }, ps.filter((p, k) => k !== turn).map(p => el('button', { class: 'pchip big', style: colorVars(p.color), ontap: () => got(p.i) }, el('span', { class: 'emo' }, p.e), el('span', { class: 'pchip-name' }, p.name)))),
+        el('button', { class: 'pill-btn ghost', ontap: () => got(-1) }, 'Nobody guessed it')));
+      api.ask('Open your eyes! What is it? Shout your guess!');
+    }
+    function got(k) {
+      const w = used[used.length - 1], actor = turn;
+      played++; turn = (turn + 1) % ps.length;
+      if (k >= 0) { sb.add(k); sb.add(actor); Sfx.good(); api.ask(`It was: ${w[0]}! A point for ${ps[k].name} and ${ps[actor].name}!`, null, () => later(ready, 400)); }
+      else { Sfx.oops(); api.ask(`It was: ${w[0]}! Good try!`, null, () => later(ready, 400)); }
+    }
+    ready();
+  }
+
+  // Dance while the music plays, freeze when it stops.
+  function famFreeze(g) {
+    const { stage, api, ps } = g; const out = ps.map(() => false); let playing = false;
+    const sb = scoreBoard(ps, true, i => {
+      if (playing) return;
+      out[i] = !out[i]; sb.toggle(i, 'out', out[i]); Sfx.pop();
+      if (ps.length > 1 && out.filter(o => !o).length === 1) later(() => famWinner(g, out.map(o => (o ? 0 : 1))), 500);
+    });
+    const pip = el('div', { class: 'freeze-pip', html: pipSVG() });
+    const text = el('div', { class: 'fam-big-text' }, 'Get ready to dance!');
+    const sub = el('div', { class: 'fam-big-sub' }, 'Dance while the music plays. When it stops, freeze like a statue!');
+    const btnLbl = el('span', null, 'Start the music');
+    const btn = el('button', { class: 'pill-btn big', ontap: start }, el('span', { class: 'emo' }, '🎵'), btnLbl);
+    const reset = el('button', { class: 'pill-btn ghost big', ontap: () => { Sfx.pop(); out.fill(false); ps.forEach((p, k) => sb.toggle(k, 'out', false)); api.ask('Everyone is back in!'); } },
+      el('span', { class: 'ic', html: ICON.redo }), el('span', null, 'Everyone back in'));
+    const card = el('div', { class: 'card fam-big' }, pip, text, sub);
+    stage.replaceChildren(famFrame(g, [sb.node, el('div', { class: 'fam-stage-area' }, card), el('div', { class: 'fam-actions' }, btn, reset)]));
+    function start() {
+      if (playing) return; playing = true;
+      Music.start(); card.classList.add('dancing'); text.textContent = 'Dance, dance, dance!'; sub.textContent = '🎵 🎶 🎵 🎶';
+      btn.hidden = true; reset.hidden = true; api.show('Dance!');
+      later(() => {
+        Music.stop(); playing = false; card.classList.remove('dancing');
+        text.textContent = 'FREEZE! 🧊'; sub.textContent = 'Did anyone move? Tap their name. Then dance again!';
+        Sfx.oops(); restart(card, 'boing'); Speech.say('Freeze!');
+        api.show('Freeze!'); btnLbl.textContent = 'Dance again'; btn.hidden = false; reset.hidden = false;
+      }, 6000 + rand(9000));
+    }
+    api.ask(g.game.about);
+  }
+
+  // Hot potato with words: say a word from the topic, then pass. Don't hold the balloon when it pops!
+  function famBalloon(g) {
+    const { stage, api, ps } = g, ROUNDS = 5; let round = 0, holder = rand(ps.length), live = false;
+    const sb = scoreBoard(ps);
+    const balloon = el('div', { class: 'fam-balloon' });
+    const title = el('div', { class: 'fam-big-text' }), ex = el('div', { class: 'bal-ex' }), holderEl = el('div', { class: 'gwho' });
+    const passB = el('button', { class: 'pill-btn big', ontap: pass }, el('span', { class: 'emo' }, '➡️'), el('span', null, 'I said one! Pass it'));
+    const startB = el('button', { class: 'pill-btn big alt', ontap: begin }, el('span', { class: 'emo' }, '🎈'), el('span', null, 'Start the balloon'));
+    stage.replaceChildren(famFrame(g, [sb.node, el('div', { class: 'fam-stage-area' }, el('div', { class: 'card fam-big' }, title, ex, balloon, holderEl)), el('div', { class: 'fam-actions' }, startB, passB)]));
+    function showHolder() {
+      sb.turn(holder);
+      holderEl.replaceChildren(el('span', { class: 'emo' }, ps[holder].e), el('span', null, `${ps[holder].name} has the balloon`));
+      holderEl.setAttribute('style', colorVars(ps[holder].color));
+    }
+    function setup() {
+      if (round >= ROUNDS) { famWinner(g, sb.scores, { low: true, fmt: n => (n ? '🎈'.repeat(n) : '0') }); return; }
+      const topic = pick(VOCAB);
+      title.textContent = `${topic.name}! Say one!`;
+      ex.replaceChildren.apply(ex, shuffle(topic.words).slice(0, 3).map(w => el('span', { class: 'emo' }, w[1])));
+      balloon.className = 'fam-balloon'; balloon.style.transition = 'none'; balloon.style.transform = 'scale(.55)';
+      passB.hidden = true; startB.hidden = false; showHolder();
+      api.ask(`Round ${round + 1}: ${topic.name}! ${ps[holder].name} starts.`);
+    }
+    function begin() {
+      Sfx.pop(); live = true; startB.hidden = true; passB.hidden = false;
+      const T = 12000 + rand(13000), t0 = Date.now();
+      requestAnimationFrame(() => { balloon.style.transition = `transform ${T}ms linear`; balloon.style.transform = 'scale(1.45)'; });
+      const tick = () => { if (!live) return; const f = (Date.now() - t0) / T; Sfx.tick(1 + Math.floor(f * 9)); later(tick, Math.max(220, 900 - f * 700)); };
+      tick();
+      later(pop, T);
+      api.show(`Say ${title.textContent.split('!')[0].toLowerCase()} words, then pass!`);
+    }
+    function pass() { if (!live) return; Sfx.pop(); holder = (holder + 1) % ps.length; showHolder(); bounce(holderEl); Speech.say(ps[holder].name); }
+    function pop() {
+      if (!live) return; live = false;
+      Sfx.burst(); burst(balloon, 40); balloon.style.transition = 'none'; balloon.style.transform = ''; balloon.classList.add('popped');
+      sb.add(holder); passB.hidden = true; round++;
+      api.ask(`Pop! ${ps[holder].name} had the balloon!`, null, () => later(setup, 1200));
+    }
+    setup();
+  }
+
+  const FAM_GAMES = [
+    { name: 'Picture Race', e: '🏁', color: 'red', kind: 'All at once', about: 'Everyone finds the picture Pip says. The fastest finger gets the point!', run: g => famRace(g, RACE.picture) },
+    { name: 'Letter Race', e: '🔤', color: 'yellow', kind: 'All at once', about: 'Find the letter Pip says before anyone else!', run: g => famRace(g, RACE.letter) },
+    { name: 'Math Race', e: '➕', color: 'green', kind: 'All at once', about: 'Count, add or take away. Fastest right answer wins the point!', run: g => famRace(g, RACE.math) },
+    { name: 'Yes or No?', e: '👍', color: 'blue', kind: 'All at once', about: 'Is Pip right? Everyone answers yes or no. Every right answer scores!', run: g => famRace(g, RACE.yesno, true) },
+    { name: 'Family Memory', e: '🃏', color: 'teal', kind: 'Take turns', about: 'Take turns finding pairs. A match scores a point and you go again!', run: famMemory },
+    { name: 'Garden Race', e: '🎲', color: 'wood', kind: 'Take turns', about: 'Roll the dice and race along the path to the flower garden!', run: famGarden },
+    { name: 'Pip Says', e: '🙌', color: 'orange', kind: 'Get moving', about: 'Do the move only when Pip says “Pip says”!', run: famPipSays },
+    { name: 'Act It Out', e: '🎭', color: 'purple', kind: 'Take turns', about: 'Act out the secret picture. Everyone else guesses!', run: famCharades },
+    { name: 'Freeze Dance', e: '💃', color: 'pink', kind: 'Get moving', about: 'Dance while the music plays. Freeze when it stops!', run: famFreeze },
+    { name: 'Pass the Balloon', e: '🎈', color: 'navy', kind: 'Take turns', about: 'Say a word from the topic, then pass. Don’t be holding the balloon when it pops!', run: famBalloon }
+  ];
+  function familyHub(stage, api) {
+    function hub(quiet) {
+      screenToken++; Music.stop(); if (!quiet) Speech.stop();
+      stage.replaceChildren();
+      const ps = famPlayers(), d = Store.data;
+      const setCount = n => { d.famCount = Math.min(6, Math.max(2, ps.length + n)); Store.save(); Sfx.pop(); hub(true); };
+      const seg = (labels, cur, setv) => labels.map((t, k) => el('button', { class: 'seg-b' + (cur === k ? ' on' : ''), ontap: () => { setv(k); Store.save(); Sfx.pop(); hub(true); } }, t));
+      const setup = el('div', { class: 'card fam-setup' },
+        el('div', { class: 'fam-row' }, el('span', { class: 'fam-label' }, 'Players'),
+          el('button', { class: 'round fam-pm', 'aria-label': 'Fewer players', ontap: () => setCount(-1) }, '−'),
+          el('span', { class: 'fam-count' }, String(ps.length)),
+          el('button', { class: 'round fam-pm', 'aria-label': 'More players', ontap: () => setCount(1) }, '+')),
+        el('div', { class: 'fam-row' }, el('span', { class: 'fam-label' }, 'Level'), seg(['Easy', 'Medium', 'Hard'], famLevel() - 1, k => { d.famLevel = k + 1; })),
+        el('div', { class: 'fam-row' }, el('span', { class: 'fam-label' }, 'Seats'), seg(['Around the iPad', 'Side by side'], d.famFlip === false ? 1 : 0, k => { d.famFlip = k === 0; })),
+        el('div', { class: 'fam-names' }, ps.map(p => el('label', { class: 'fam-name', style: colorVars(p.color) }, el('span', { class: 'emo' }, p.e),
+          el('input', { id: 'fam-name-' + p.i, type: 'text', maxlength: '10', value: p.name, autocomplete: 'off', autocapitalize: 'words', spellcheck: 'false', 'aria-label': `Player ${p.i + 1} name`,
+            oninput: e => { const arr = (d.famNames || []).slice(); arr[p.i] = e.target.value.slice(0, 10); d.famNames = arr; Store.save(); } })))));
+      const grid = el('div', { class: 'fam-grid' }, FAM_GAMES.map(gm => el('button', { class: 'fam-card', style: colorVars(gm.color), 'aria-label': gm.name, ontap: () => startGame(gm) },
+        el('span', { class: 'emo' }, gm.e), el('span', { class: 'fam-card-name' }, gm.name), el('span', { class: 'fam-card-kind' }, gm.kind))));
+      stage.append(setup, grid);
+      if (!quiet) api.ask('Family time! Pick a game to play together.');
+    }
+    function startGame(gm) {
+      screenToken++; Sfx.pop(); Speech.stop();
+      const g = { stage, api, ps: famPlayers(), game: gm, back: () => hub(), again: () => startGame(gm) };
+      stage.replaceChildren();
+      gm.run(g);
+    }
+    hub();
+  }
+
   /* ================= activity list ================= */
   const ACTS = {
     letters: { title: 'Letters', color: 'red', face: () => 'Aa',
-      modes: [{ id: 'learn', label: 'Learn', icon: 'Aa' }, { id: 'find', label: 'Find it', icon: '🔍' }],
-      def: () => level() <= 1 ? 'learn' : 'find', run: { learn: lettersLearn, find: lettersFind } },
+      modes: [{ id: 'learn', label: 'Learn', icon: 'Aa' }, { id: 'find', label: 'Find it', icon: '🔍' }, { id: 'match', label: 'Big & little', icon: 'Bb' }],
+      def: () => level() <= 1 ? 'learn' : 'find', run: { learn: lettersLearn, find: lettersFind, match: lettersMatch } },
     reading: { title: 'Reading', color: 'yellow', face: () => [el('span', { class: 'face-emo' }, '🐱'), el('span', { class: 'sm' }, 'cat')],
       modes: [{ id: 'find', label: 'Find it', icon: '🐶' }, { id: 'pop', label: 'Pop it', icon: '🎈' }, { id: 'rhyme', label: 'Rhymes', icon: '🎵' }],
       run: { find: wordsFind, pop: wordsPop, rhyme: readingRhyme } },
     vocab: { title: 'Vocabulary', color: 'orange', face: () => el('span', { class: 'face-emo trio' }, '🍌🐘🚗'),
-      modes: [{ id: 'learn', label: 'Learn words', icon: '💬' }, { id: 'quiz', label: 'Show me', icon: '👉' }, { id: 'sort', label: 'Sort it', icon: '🧺' }],
-      run: { learn: vocabLearn, quiz: vocabQuiz, sort: vocabSort } },
+      modes: [{ id: 'learn', label: 'Learn words', icon: '💬' }, { id: 'quiz', label: 'Show me', icon: '👉' }, { id: 'opp', label: 'Opposites', icon: '↔️' }, { id: 'sort', label: 'Sort it', icon: '🧺' }],
+      run: { learn: vocabLearn, quiz: vocabQuiz, opp: vocabOpposites, sort: vocabSort } },
     spell: { title: 'Spelling', color: 'purple', face: () => [el('span', { class: 'face-emo' }, '🐝'), el('span', { class: 'sm' }, 'b_e')],
-      modes: [{ id: 'build', label: 'Spell it', icon: 'abc' }, { id: 'missing', label: 'Missing letter', icon: '?' }, { id: 'family', label: 'Word families', icon: '-at' }],
-      run: { build: spellBuild, missing: spellMissing, family: spellFamily } },
+      modes: [{ id: 'build', label: 'Spell it', icon: 'abc' }, { id: 'missing', label: 'Missing letter', icon: '?' }, { id: 'bee', label: 'Spelling bee', icon: '🐝' }, { id: 'family', label: 'Word families', icon: '-at' }],
+      run: { build: spellBuild, missing: spellMissing, bee: spellBee, family: spellFamily } },
     numbers: { title: 'Numbers', color: 'green', face: () => '123',
-      modes: [{ id: 'count', label: 'Count', icon: '🍎' }, { id: 'add', label: 'Add', icon: '+' }, { id: 'more', label: 'Which is more?', icon: '⚖️' }],
-      run: { count: numbersCount, add: numbersAdd, more: numbersMore } },
+      modes: [{ id: 'count', label: 'Count', icon: '🍎' }, { id: 'dots', label: 'Dots', icon: '⚄' }, { id: 'add', label: 'Add', icon: '+' }, { id: 'sub', label: 'Take away', icon: '−' },
+        { id: 'more', label: 'More?', icon: '⚖️' }, { id: 'missing', label: 'Missing number', icon: '?' }],
+      run: { count: numbersCount, dots: numbersDots, add: numbersAdd, sub: numbersSub, more: numbersMore, missing: numbersMissing } },
     write: { title: 'Writing', color: 'blue', face: () => el('span', { class: 'face-svg', html: ICON.pencil }),
       modes: [{ id: 'shapes', label: 'Lines', icon: '〰️' }, { id: 'upper', label: 'ABC', icon: 'A' }, { id: 'lower', label: 'abc', icon: 'a' }, { id: 'num', label: '123', icon: '1' }, { id: 'name', label: 'Names', icon: '😊', when: () => kidNames().length > 0 }],
       def: () => ['shapes', 'upper', 'upper', 'lower'][level() - 1],
@@ -2289,7 +3175,9 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
       run: { match: memoryMatch, gone: memoryGone, copy: memoryCopy } },
     think: { title: 'Thinking', color: 'wood', face: () => el('span', { class: 'face-emo solo' }, '🧩'),
       modes: [{ id: 'pattern', label: 'What’s next?', icon: '🔁' }, { id: 'odd', label: 'Odd one out', icon: '🤔' }, { id: 'shadow', label: 'Shadows', icon: '👤' }],
-      run: { pattern: thinkPattern, odd: thinkOdd, shadow: thinkShadow } }
+      run: { pattern: thinkPattern, odd: thinkOdd, shadow: thinkShadow } },
+    family: { title: 'Family Games', color: 'navy', face: () => el('span', { class: 'face-emo solo' }, '👨‍👩‍👧‍👦'),
+      modes: [{ id: 'play', label: 'Play', icon: '🎲' }], run: { play: familyHub } }
   };
 
   /* ================= screens ================= */
@@ -2297,7 +3185,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
     cur: null,
     go(name, arg) {
       screenToken++;
-      Speech.stop();
+      Speech.stop(); Music.stop();
       document.querySelectorAll('.overlay').forEach(o => o.remove());
       const v = $('#view'); v.replaceChildren();
       this.cur = { name, arg: arg || {} };
@@ -2360,11 +3248,11 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
     App.cur.arg = { id, mode };
     const prompt = promptRow();
     const stage = el('main', { class: 'stage' });
-    v.append(el('section', { class: 'screen act', style: colorVars(A.color) },
+    v.append(el('section', { class: 'screen act act-' + id, style: colorVars(A.color) },
       el('header', { class: 'bar' },
         roundBtn('home', 'Home', () => App.go('home')),
         el('h1', { class: 'act-title' }, A.title),
-        el('nav', { class: 'modes', 'aria-label': A.title + ' games' }, modes.map(m => el('button', { class: 'mode' + (m.id === mode ? ' on' : ''), 'aria-pressed': String(m.id === mode),
+        el('nav', { class: 'modes' + (modes.length < 2 ? ' single' : ''), 'aria-label': A.title + ' games' }, modes.map(m => el('button', { class: 'mode' + (m.id === mode ? ' on' : ''), 'aria-pressed': String(m.id === mode),
           ontap: () => { if (m.id !== mode) { Sfx.pop(); App.go('act', { id, mode: m.id }); } } }, el('span', { class: 'mode-ic', 'aria-hidden': 'true' }, m.icon), el('span', { class: 'mode-lbl' }, m.label)))),
         starsPill()),
       prompt.node, stage));
@@ -2430,6 +3318,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
             el('li', null, 'Ten to fifteen minutes is plenty for little ones.'),
             el('li', null, 'On the go: Memory, Pop it, Show me and What’s next? are quick games that work well in short bursts.'),
             el('li', null, 'At home: Writing, Stories and Make a story work best sitting together, with your child talking about the pictures.'),
+            el('li', null, 'Family Games: lay the iPad flat in the middle of the table. With 4 or more players, half the panels turn to face the other side.'),
             el('li', null, 'No sound? Turn up the volume and check the iPad’s silent mode.'),
             el('li', null, 'To keep your child inside the game, turn on Guided Access in Settings, then Accessibility.'),
             el('li', null, 'In Safari, tap Share, then Add to Home Screen, to open the game like an app.'))))));
@@ -2442,7 +3331,7 @@ button.card.pressed { transform: translateY(5px); box-shadow: 0 3px 0 var(--pape
   document.addEventListener('gesturestart', e => e.preventDefault());
   document.addEventListener('dblclick', e => e.preventDefault());
   document.addEventListener('contextmenu', e => { if (!e.target.closest('input')) e.preventDefault(); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) Speech.stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { Speech.stop(); Music.stop(); } });
   const themeChanged = () => window.dispatchEvent(new Event('themechange'));
   if (window.matchMedia) { const mq = matchMedia('(prefers-color-scheme: dark)'); if (mq.addEventListener) mq.addEventListener('change', themeChanged); }
   if (window.MutationObserver) new MutationObserver(themeChanged).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

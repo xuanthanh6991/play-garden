@@ -1,6 +1,6 @@
 // Saves Ivy and Ryan's Play Garden on the device so it plays with no internet.
 // Bump VERSION whenever index.html changes so devices pick up the new game.
-const VERSION = 'play-garden-v2';
+const VERSION = 'play-garden-v3';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Grandstander:wght@600;700;800&display=swap';
 
