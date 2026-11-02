@@ -1,0 +1,16 @@
+{
+  "name": "Ivy and Ryan's Play Garden",
+  "short_name": "Play Garden",
+  "description": "A talking learning game for toddlers: letters, reading, vocabulary, spelling, numbers, notebook writing, stories, memory and thinking.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#DFF3FB",
+  "theme_color": "#8ED2F2",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
